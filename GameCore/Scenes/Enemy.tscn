@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw0s6d8qxcnet"]
+[gd_scene load_steps=7 format=3 uid="uid://bw0s6d8qxcnet"]
 
 [ext_resource type="Script" uid="uid://cq0hhl7ixu3xr" path="res://GameCore/Scripts/Enemy.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bl1ogqah5f4xc" path="res://HealthSystem/HealthComponent.tscn" id="2"]
 [ext_resource type="Resource" uid="uid://d2fka02gd4p0c" path="res://GameCore/Resources/EnemyHealth.tres" id="3"]
-[ext_resource type="Script" uid="uid://thkkt8wsher" path="res://GameCore/Scripts/HealthComponentAdapter.gd" id="4"]
 
 [sub_resource type="Gradient" id="Gradient_ovtem"]
 offsets = PackedFloat32Array(1)
@@ -30,9 +29,6 @@ shape = SubResource("RectangleShape2D_ovtem")
 
 [node name="Health" parent="." instance=ExtResource("2")]
 initial_status = ExtResource("3")
-
-[node name="HealthAdapter" type="Node" parent="."]
-script = ExtResource("4")
 
 [node name="DamageArea" type="Area2D" parent="."]
 collision_layer = 0
