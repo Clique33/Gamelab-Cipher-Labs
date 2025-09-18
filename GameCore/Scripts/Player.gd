@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var move_speed: float = 240.0
 @export var projectile_scene: PackedScene = preload("res://GameCore/Scenes/Projectile.tscn")
