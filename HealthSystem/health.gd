@@ -12,6 +12,8 @@ const GRAY_HEALTH_DELAY = 0.5
 func damage(value: float) -> void:
 	status.damage(value)
 
+# API esperada: take_damage/current_health
+
 func _ready() -> void:
 	# initializes the health UI with the current health status
 	status = initial_status.duplicate()
@@ -20,3 +22,5 @@ func _ready() -> void:
 	gray_ui.max_value = status.MaxHealth
 	gray_ui.value = status.CurrentHealth
 	status.health_changed.connect(ui.handle_change)
+	
+	
