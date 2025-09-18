@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name HealthComponent
 
 @export var initial_status: HealthStatus
 var status: HealthStatus
@@ -8,6 +8,8 @@ var status: HealthStatus
 const GRAY_HEALTH_DELAY = 0.5
 
 @onready var ui: Control = $UI
+
+signal died
 
 func damage(value: float) -> void:
 	status.damage(value)
@@ -22,5 +24,7 @@ func _ready() -> void:
 	gray_ui.max_value = status.MaxHealth
 	gray_ui.value = status.CurrentHealth
 	status.health_changed.connect(ui.handle_change)
-	
-	
+	status.died.connect(_on_died)
+
+func _on_died():
+	died.emit()
