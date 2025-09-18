@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var touch_damage: float = 5.0
 @export var touch_interval: float = 0.5
 @onready var player: Node2D = null
-@onready var health_node: Node = $Health if has_node("Health") else null
+@onready var health_node: HealthComponent = $Health
 var _touching_player: bool = false
 var _touch_elapsed: float = 0.0
 
@@ -14,13 +14,9 @@ func _ready() -> void:
 	_set_player_ref()
 	set_physics_process(true)
 	# Se tiver componente de vida, reagir à morte
-	if health_node and health_node.get("status") != null:
-		var st = health_node.get("status")
-		if st and st.died.is_connected(_on_died) == false:
-			st.died.connect(_on_died)
+	health_node.died.connect(_on_died)
 	# Esconde a UI do Health para inimigos
-	if health_node and health_node.has_node("UI"):
-		health_node.get_node("UI").visible = false
+	health_node.ui.visible = false
 
 func _physics_process(delta: float) -> void:
 	# Dano por contato com intervalo
