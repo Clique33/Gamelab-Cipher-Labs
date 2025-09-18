@@ -21,10 +21,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	# Aplica dano se o corpo for inimigo e tiver Health
 	if body.is_in_group("enemy"):
-		var health_node = null
-		if body.has_node("Health"):
-			health_node = body.get_node("Health")
-		if body.has_node("HealthAdapter"):
-			var adapter = body.get_node("HealthAdapter")
-			adapter.take_damage(damage)
+		for child in body.get_children():
+			if child is HealthComponent:
+				child.damage(damage)
 	queue_free()

@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var stop_distance: float = 20.0
 @export var touch_damage: float = 5.0
 @export var touch_interval: float = 0.5
-@onready var player: Node2D = null
+@onready var player: Player = null
 @onready var health_node: HealthComponent = $Health
 var _touching_player: bool = false
 var _touch_elapsed: float = 0.0
@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 			_touch_elapsed = 0.0
 			_apply_touch_damage()
 
-	if player == null or not is_instance_valid(player):
+	if player == null or player is not Player:
 		_set_player_ref()
 		velocity = Vector2.ZERO
 		return
@@ -60,9 +60,8 @@ func _apply_touch_damage() -> void:
 	if not player or not is_instance_valid(player):
 		return
 	# Procura o Health do player e aplica dano
-	if player.has_node("HealthAdapter"):
-		var adapter = player.get_node("HealthAdapter")
-		adapter.take_damage(touch_damage)
+	if player:
+		player.health_node.damage(touch_damage)
 
 func _on_died() -> void:
 	set_physics_process(false)
