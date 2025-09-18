@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var fire_interval: float = 0.3
 
 var _input_vec: Vector2 = Vector2.ZERO
-@onready var health_node: Node = $Health if has_node("Health") else null
+@onready var health_node: HealthComponent = $Health
 var _fire_elapsed: float = 0.0
 
 signal player_died
@@ -14,10 +14,7 @@ func _ready() -> void:
 	add_to_group("player")
 	_ensure_input_actions()
 	# Conecta morte do HealthSystem -> die()
-	if health_node and health_node.get("status") != null:
-		var st = health_node.get("status")
-		if st and not st.died.is_connected(_on_health_died):
-			st.died.connect(_on_health_died)
+	health_node.status.died.connect(_on_health_died)
 
 func _physics_process(delta: float) -> void:
 	# Coleta input (WASD e setas)
@@ -93,4 +90,4 @@ func die() -> void:
 	collision_layer = 0
 	collision_mask = 0
 	visible = false
-	emit_signal("player_died")
+	player_died.emit()
