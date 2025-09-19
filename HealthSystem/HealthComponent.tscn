@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bl1ogqah5f4xc"]
 
-[ext_resource type="Script" uid="uid://c8nyi65guoq2w" path="res://HealthSystem/health.gd" id="1_ggl66"]
+[ext_resource type="Script" uid="uid://c8nyi65guoq2w" path="res://HealthSystem/health_component.gd" id="1_ggl66"]
 [ext_resource type="PackedScene" uid="uid://cqq5gdwjfejxl" path="res://HealthSystem/UI.tscn" id="2_aoxqp"]
 
 [node name="Health" type="Node2D"]
