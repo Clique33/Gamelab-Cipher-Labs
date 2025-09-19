@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="HealthStatus" load_steps=2 format=3 uid="uid://d2fka02gd4p0c"]
+
+[ext_resource type="Script" uid="uid://ddyicvouwtnur" path="res://HealthSystem/health_status.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+MaxHealth = 30.0
+CurrentHealth = 30.0

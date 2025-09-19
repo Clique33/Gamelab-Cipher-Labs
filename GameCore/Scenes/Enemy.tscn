@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bw0s6d8qxcnet"]
+
+[ext_resource type="Script" uid="uid://cq0hhl7ixu3xr" path="res://GameCore/Scripts/Enemy.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bl1ogqah5f4xc" path="res://HealthSystem/HealthComponent.tscn" id="2"]
+[ext_resource type="Resource" uid="uid://d2fka02gd4p0c" path="res://GameCore/Resources/EnemyHealth.tres" id="3"]
+
+[sub_resource type="Gradient" id="Gradient_ovtem"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8rchy"]
+gradient = SubResource("Gradient_ovtem")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovtem"]
+size = Vector2(64, 64)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1")
+move_speed = 90.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0.3, 0.3, 1)
+texture = SubResource("GradientTexture2D_8rchy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ovtem")
+
+[node name="Health" parent="." instance=ExtResource("2")]
+initial_status = ExtResource("3")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="DamageShape" type="CollisionShape2D" parent="DamageArea"]
+scale = Vector2(1.05, 1.05)
+shape = SubResource("RectangleShape2D_ovtem")
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_damage_body_exited"]
