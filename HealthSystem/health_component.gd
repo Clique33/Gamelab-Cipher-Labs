@@ -1,15 +1,15 @@
 extends Node2D
 class_name HealthComponent
 
+signal died()
+
+const GRAY_HEALTH_DELAY = 0.5
+
 @export var initial_status: HealthStatus
 var status: HealthStatus
 @onready var current_ui: ProgressBar = $UI/current_bar
 @onready var gray_ui: ProgressBar = $UI/gray_health
-const GRAY_HEALTH_DELAY = 0.5
-
 @onready var ui: Control = $UI
-
-signal died
 
 func damage(value: float) -> void:
 	status.damage(value)
