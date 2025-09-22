@@ -31,4 +31,5 @@ offset_left = 165.0
 offset_top = 75.0
 offset_right = 251.562
 offset_bottom = 106.0
+max_value = 1e+07
 value = 5.0
