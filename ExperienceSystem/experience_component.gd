@@ -19,7 +19,7 @@ func _calculate_experience_to_level() -> float:
 
 func add_experience(amount: float) -> void:
 	current_experience += amount
-	if current_experience >= experience_to_level:
+	while current_experience >= experience_to_level:
 		level_up()
 	experience_gained.emit(current_experience)
 
