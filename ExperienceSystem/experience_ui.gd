@@ -10,7 +10,7 @@ func _ready() -> void:
 	bar.value = component.current_experience
 	bar.max_value = component.experience_to_level
 	lvl_num.text = str(component.level)
-	exp_num.text = str(component.current_experience) + "/" + str(component.experience_to_level)
+	_on_experience_gained(0)
 	component.leveled.connect(_on_leveled)
 	component.experience_gained.connect(_on_experience_gained)
 	bar.mouse_entered.connect(_on_bar_mouse_enter)
@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _on_experience_gained(new_value: float) -> void:
 	bar.value = new_value
-	exp_num.text = str(new_value) + "/" + str(component.experience_to_level)
+	exp_num.text = "%.2f/%.2f" % [component.current_experience, component.experience_to_level]
 	
 func _on_leveled(new_level: int) -> void:
 	bar.max_value = component.experience_to_level
