@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://7qheaoeh5xab"]
 
-[ext_resource type="Script" uid="uid://c81tyokvcn86l" path="res://Weapons/weapon_projectile.gd" id="1_07xkp"]
+[ext_resource type="Script" uid="uid://c81tyokvcn86l" path="res://Upgrades/Weapons/weapon_projectile.gd" id="1_07xkp"]
 [ext_resource type="PackedScene" uid="uid://dm4oyb76eidld" path="res://GameCore/Scenes/Projectile.tscn" id="2_f7aom"]
 
 [node name="MachineGun" type="Node2D" node_paths=PackedStringArray("origin")]

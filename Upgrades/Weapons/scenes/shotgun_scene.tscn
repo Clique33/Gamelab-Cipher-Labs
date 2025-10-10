@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dyc4k5ihwqo3v"]
 
-[ext_resource type="Script" uid="uid://muoxi6du1oum" path="res://Weapons/weapon_area.gd" id="1_hxn7a"]
+[ext_resource type="Script" uid="uid://muoxi6du1oum" path="res://Upgrades/Weapons/weapon_area.gd" id="1_hxn7a"]
 
 [node name="ShotgunScene" type="Node2D" node_paths=PackedStringArray("area")]
 script = ExtResource("1_hxn7a")
