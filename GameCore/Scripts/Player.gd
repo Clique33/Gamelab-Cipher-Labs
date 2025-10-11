@@ -10,7 +10,8 @@ var _input_vec: Vector2 = Vector2.ZERO
 @onready var experience_node: ExperienceComponent = $ExperienceComponent
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var _fire_elapsed: float = 0.0
-
+var _is_taking_damage: bool = false
+var _damage_cooldown: float = 0.0
 signal player_died
 
 func _ready() -> void:
@@ -21,6 +22,8 @@ func _ready() -> void:
 	_ensure_input_actions()
 	# Conecta morte do HealthSystem -> die()
 	health_node.status.died.connect(_on_health_died)
+	# Conecta dano para tocar animação hurt
+	health_node.status.health_changed.connect(_on_health_changed)
 
 func _physics_process(delta: float) -> void:
 	# Coleta input (WASD e setas)
@@ -33,6 +36,12 @@ func _physics_process(delta: float) -> void:
 	velocity = _input_vec * move_speed
 	move_and_slide()
 	
+	# Atualiza timer de dano
+	if _damage_cooldown > 0:
+		_damage_cooldown -= delta
+		if _damage_cooldown <= 0:
+			_is_taking_damage = false
+	
 	# Atualiza animação baseado no movimento
 	_update_animation()
 
@@ -43,6 +52,12 @@ func _physics_process(delta: float) -> void:
 		_shoot()
 
 func _update_animation() -> void:
+	# Se está tomando dano, mantém animação hurt
+	if _is_taking_damage:
+		if animated_sprite.animation != "hurt":
+			animated_sprite.play("hurt")
+		return
+	
 	# Se está se movendo, toca "run", senão "idle"
 	if _input_vec.length() > 0.1:
 		animated_sprite.play("run")
@@ -101,6 +116,11 @@ func _ensure_action_mouse(action: StringName, button_index: int) -> void:
 
 func _on_health_died() -> void:
 	die()
+
+func _on_health_changed(new_health: float) -> void:
+	# Toca animação hurt quando a vida muda (dano ou cura)
+	_is_taking_damage = true
+	_damage_cooldown = 0.3  # Mantém animação hurt por 0.3s
 
 func die() -> void:
 	# Desativa física/entrada e colisões do player
