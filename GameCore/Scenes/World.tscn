@@ -15,7 +15,6 @@ script = ExtResource("2")
 component = NodePath("../../Player/ExperienceComponent")
 
 [node name="Player" parent="." instance=ExtResource("1")]
-collision_mask = 16
 up_direction = Vector2(0, 1)
 
 [node name="ExperienceComponent" type="Node" parent="Player"]
