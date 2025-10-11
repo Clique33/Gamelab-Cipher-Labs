@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://bc16geukmwhn4"]
+
+[ext_resource type="Script" uid="uid://bak65r8e73v10" path="res://GameCore/Scripts/xp_orb.gd" id="1_o11n6"]
+[ext_resource type="Texture2D" uid="uid://chwis4i4ke4y3" path="res://GameCore/Sprites/exp_drop.png" id="2_oh3x0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o11n6"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o11n6"]
+atlas = ExtResource("2_oh3x0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh3x0"]
+atlas = ExtResource("2_oh3x0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsabm"]
+atlas = ExtResource("2_oh3x0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lcor"]
+atlas = ExtResource("2_oh3x0")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aia7y"]
+atlas = ExtResource("2_oh3x0")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35nt3"]
+atlas = ExtResource("2_oh3x0")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rlvi"]
+atlas = ExtResource("2_oh3x0")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yp1g"]
+atlas = ExtResource("2_oh3x0")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7lu0s"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_o11n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh3x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsabm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lcor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aia7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35nt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rlvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yp1g")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 15.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_o11n6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o11n6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7lu0s")
+animation = &"idle"
