@@ -8,7 +8,7 @@ class_name Player
 var _input_vec: Vector2 = Vector2.ZERO
 @onready var health_node: HealthComponent = $Health
 @onready var experience_node: ExperienceComponent = $ExperienceComponent
-@onready var sprite: Sprite2D = $Sprite
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var _fire_elapsed: float = 0.0
 
 signal player_died
@@ -32,12 +32,25 @@ func _physics_process(delta: float) -> void:
 		_input_vec = _input_vec.normalized()
 	velocity = _input_vec * move_speed
 	move_and_slide()
+	
+	# Atualiza animação baseado no movimento
+	_update_animation()
 
 	# Disparo automático
 	_fire_elapsed += delta
 	if _fire_elapsed >= fire_interval:
 		_fire_elapsed = 0.0
 		_shoot()
+
+func _update_animation() -> void:
+	# Se está se movendo, toca "run", senão "idle"
+	if _input_vec.length() > 0.1:
+		animated_sprite.play("run")
+		# Flip horizontal baseado na direção
+		if _input_vec.x != 0:
+			animated_sprite.flip_h = _input_vec.x < 0
+	else:
+		animated_sprite.play("idle")
 
 func _shoot() -> void:
 	if projectile_scene == null:
@@ -90,12 +103,19 @@ func _on_health_died() -> void:
 	die()
 
 func die() -> void:
-	# Desativa física/entrada e colisões do player, e emite um evento
+	# Desativa física/entrada e colisões do player
 	set_process(false)
 	set_physics_process(false)
 	collision_layer = 0
 	collision_mask = 0
+	
+	# Toca animação de morte
+	animated_sprite.play("death")
+	
+	# Espera a animação terminar antes de esconder
+	await animated_sprite.animation_finished
 	visible = false
+	
 	player_died.emit()
 
 func add_experience(amount: int) -> void:
