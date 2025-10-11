@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ExperienceData" load_steps=2 format=3 uid="uid://dt70xexdpd48h"]
+
+[ext_resource type="Script" uid="uid://dg4bajw7dfq5g" path="res://ExperienceSystem/experience_data.gd" id="1_6lhyq"]
+
+[resource]
+script = ExtResource("1_6lhyq")
+experience_level_base = 10.0
+experience_level_growth = 1.2
+metadata/_custom_type_script = "uid://dg4bajw7dfq5g"

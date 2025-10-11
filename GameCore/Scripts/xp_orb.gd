@@ -56,6 +56,10 @@ func _on_body_entered(body: Node2D) -> void:
 		_collect(body)
 
 func _collect(collector: Node2D) -> void:
+	# Adiciona XP ao player
+	if collector is Player:
+		collector.add_experience(xp_value)
+	
 	# Emite signal com a quantidade de XP
 	collected.emit(xp_value)
 	

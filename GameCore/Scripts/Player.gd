@@ -7,11 +7,16 @@ class_name Player
 
 var _input_vec: Vector2 = Vector2.ZERO
 @onready var health_node: HealthComponent = $Health
+@onready var experience_node: ExperienceComponent = $ExperienceComponent
+@onready var sprite: Sprite2D = $Sprite
 var _fire_elapsed: float = 0.0
 
 signal player_died
 
 func _ready() -> void:
+	# Força o player a ser visível
+	visible = true
+	
 	add_to_group("player")
 	_ensure_input_actions()
 	# Conecta morte do HealthSystem -> die()
@@ -85,6 +90,7 @@ func _on_health_died() -> void:
 	die()
 
 func die() -> void:
+	print("Player: die() called! Making player invisible!")
 	# Desativa física/entrada e colisões do player, e emite um evento
 	set_process(false)
 	set_physics_process(false)
@@ -92,3 +98,7 @@ func die() -> void:
 	collision_mask = 0
 	visible = false
 	player_died.emit()
+
+func add_experience(amount: int) -> void:
+	if experience_node:
+		experience_node.add_experience(amount)

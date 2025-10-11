@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var enemy_scene: PackedScene = preload("res://GameCore/Scenes/Enemy.tscn")
-@onready var player: Node2D = $Player
+@onready var player: Player = $Player
 @onready var camera: Camera2D = $Camera2D
 
 @export var spawn_radius: float = 320.0
@@ -12,6 +12,7 @@ func _ready() -> void:
 		camera.make_current()
 		# Segue o player (em Godot 4, basta current = true e mesmo nó, mas manter claro):
 		camera.position = player.position
+	
 	_spawn_loop()
 
 func _process(delta: float) -> void:
