@@ -90,7 +90,6 @@ func _on_health_died() -> void:
 	die()
 
 func die() -> void:
-	print("Player: die() called! Making player invisible!")
 	# Desativa física/entrada e colisões do player, e emite um evento
 	set_process(false)
 	set_physics_process(false)

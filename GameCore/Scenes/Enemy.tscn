@@ -16,7 +16,7 @@ size = Vector2(64, 64)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 8
+collision_mask = 17
 script = ExtResource("1")
 move_speed = 90.0
 

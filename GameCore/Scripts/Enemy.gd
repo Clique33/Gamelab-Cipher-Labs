@@ -33,12 +33,14 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		return
 	var to_player: Vector2 = (player.global_position - global_position)
-	var dist := to_player.length()
+	var dist: float = to_player.length()
 	var dir: Vector2 = Vector2.ZERO
 	if dist > stop_distance:
 		dir = to_player.normalized()
 	velocity = dir * move_speed
-	move_and_slide()
+	
+	# Move sem colidir (atravessa o player)
+	global_position += velocity * delta
 
 func _set_player_ref() -> void:
 	var plist := get_tree().get_nodes_in_group("player")
