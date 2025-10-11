@@ -10,16 +10,16 @@ class_name XPOrb
 @export var xp_value: int = 1
 
 ## Velocidade de movimento do orb em direção ao player
-@export var move_speed: float = 200.0
+@export var move_speed: float = 300.0
 
 ## Velocidade máxima que o orb pode atingir
-@export var max_speed: float = 600.0
+@export var max_speed: float = 1200.0
 
 ## Taxa de aceleração por segundo quando atraído
-@export var acceleration: float = 400.0
+@export var acceleration: float = 800.0
 
 ## Distância a partir da qual o orb começa a ser atraído pelo player
-@export var attraction_range: float = 100.0
+@export var attraction_range: float = 150.0
 
 ## Referência ao player (detectado automaticamente)
 var player: Player = null
