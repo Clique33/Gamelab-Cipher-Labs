@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var touch_damage: float = 5.0
 @export var touch_interval: float = 0.5
 @export var xp_amount: int = 1
-@export var xp_orb_scene: PackedScene = preload("res://GameCore/Scenes/XPOrb.tscn")
+@export var xp_orb_scene: PackedScene = preload("res://GameCore/Scenes/XpOrb.tscn")
 @onready var player: Player = null
 @onready var health_node: HealthComponent = $Health
 var _touching_player: bool = false
@@ -75,7 +75,7 @@ func _spawn_xp_orb() -> void:
 	if orb:
 		orb.global_position = global_position
 		orb.xp_value = xp_amount
-		get_tree().current_scene.add_child(orb)
+		get_tree().current_scene.call_deferred("add_child",orb)
 
 func _on_died() -> void:
 	
