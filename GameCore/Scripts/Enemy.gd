@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var stop_distance: float = 20.0
 @export var touch_damage: float = 5.0
 @export var touch_interval: float = 0.5
+@export var xp_amount: int = 1
+@export var xp_orb_scene: PackedScene = preload("res://GameCore/Scenes/XpOrb.tscn")
 @onready var player: Player = null
 @onready var health_node: HealthComponent = $Health
 var _touching_player: bool = false
@@ -31,12 +33,14 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		return
 	var to_player: Vector2 = (player.global_position - global_position)
-	var dist := to_player.length()
+	var dist: float = to_player.length()
 	var dir: Vector2 = Vector2.ZERO
 	if dist > stop_distance:
 		dir = to_player.normalized()
 	velocity = dir * move_speed
-	move_and_slide()
+	
+	# Move sem colidir (atravessa o player)
+	global_position += velocity * delta
 
 func _set_player_ref() -> void:
 	var plist := get_tree().get_nodes_in_group("player")
@@ -63,7 +67,24 @@ func _apply_touch_damage() -> void:
 	if player:
 		player.health_node.damage(touch_damage)
 
+func _spawn_xp_orb() -> void:
+	if not xp_orb_scene:
+		return
+	
+	var orb: XPOrb = xp_orb_scene.instantiate() as XPOrb
+	if orb:
+		orb.global_position = global_position
+		orb.xp_value = xp_amount
+		get_tree().current_scene.call_deferred("add_child",orb)
+
 func _on_died() -> void:
+	
 	set_physics_process(false)
+	set_collision_layer(0)
+	set_collision_mask(0)
 	velocity = Vector2.ZERO
+	
+	#Spawnar orbe de xp
+	_spawn_xp_orb()
+	
 	queue_free()

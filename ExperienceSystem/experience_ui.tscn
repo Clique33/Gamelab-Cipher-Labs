@@ -15,15 +15,27 @@ bg_color = Color(1, 1, 1, 1)
 
 [node name="ExperienceUI" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_top = 4.0
+offset_right = 576.0
+offset_bottom = 25.0
+grow_horizontal = 2
+pivot_offset = Vector2(576, 0)
 script = ExtResource("1_d6n6q")
 
 [node name="ExperienceBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_right = 534.0
-offset_bottom = 18.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -550.0
+offset_right = 550.0
+offset_bottom = 19.0
+grow_horizontal = 2
+pivot_offset = Vector2(550, 0)
 theme_override_styles/background = SubResource("StyleBoxFlat_vj8kh")
 theme_override_styles/fill = SubResource("StyleBoxFlat_mlb2r")
 value = 60.0
@@ -46,7 +58,15 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 
 [node name="LevelNumber" type="Label" parent="."]
-layout_mode = 0
-offset_left = 157.0
-offset_top = -23.0
-offset_right = 197.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -550.0
+offset_top = 24.0
+offset_right = -510.0
+offset_bottom = 47.0
+grow_horizontal = 2
+pivot_offset = Vector2(20, 11.5)
+horizontal_alignment = 1
+vertical_alignment = 1
