@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://ncnn87btrh0r"]
+
+[ext_resource type="Script" uid="uid://ci7cp2afwqquq" path="res://Scripts/control.gd" id="1_vh8u0"]
+[ext_resource type="Texture2D" uid="uid://cl6i7l88w3tq0" path="res://Images/neon-geometric-border-dark-purple-background-vector_53876-170450.jpg" id="2_kqx0r"]
+[ext_resource type="FontFile" uid="uid://768bvfmqwe0y" path="res://Fonts/PLANK___.TTF" id="2_vh8u0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wpaqk"]
+font = ExtResource("2_vh8u0")
+font_size = 110
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+outline_color = Color(1, 0.5404556, 0.9858052, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vh8u0")
+
+[node name="NeonGeometricBorderDarkPurpleBackgroundVector53876170451" type="Sprite2D" parent="."]
+position = Vector2(576.0007, 323.99622)
+rotation = 1.5707964
+scale = Vector2(0.8756897, 1.0378547)
+texture = ExtResource("2_kqx0r")
+
+[node name="NeonGeometricBorderDarkPurpleBackgroundVector53876170450" type="Sprite2D" parent="."]
+position = Vector2(576.0033, 324.00598)
+rotation = 1.5707964
+scale = Vector2(0.8756919, 1.0378437)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -213.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CIPHER LABS"
+label_settings = SubResource("LabelSettings_wpaqk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.5
+offset_top = 26.0
+offset_right = 58.5
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "INICIAR JOGO"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "SAIR DO JOGO"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
