@@ -225,6 +225,7 @@ frame = 2
 frame_progress = 0.448624
 
 [node name="Health" parent="." instance=ExtResource("2")]
+visibility_layer = 512
 position = Vector2(-33, 26)
 scale = Vector2(0.255, 0.255)
 initial_status = ExtResource("3")

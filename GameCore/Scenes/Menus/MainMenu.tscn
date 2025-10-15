@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo4i45pyemgfv"]
+
+[ext_resource type="Script" uid="uid://bdy0man1m60w2" path="res://GameCore/Scripts/Menus/main_menu.gd" id="1_r3cns"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kppqf"]
+font_size = 75
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r3cns")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.002
+anchor_bottom = 1.0
+offset_right = -0.304077
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.088
+anchor_right = 0.899
+anchor_bottom = 0.174
+offset_left = -278.0
+offset_top = -196.0
+offset_right = 283.0
+offset_bottom = -93.0
+text = "Cipher Protocol"
+label_settings = SubResource("LabelSettings_kppqf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -198.0
+offset_top = 55.0
+offset_right = 203.0
+offset_bottom = 122.0
+text = "JOGAR"
+
+[node name="Button2" type="Button" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = 143.0
+offset_right = 201.0
+offset_bottom = 215.0
+text = "SAIR"
+
+[connection signal="pressed" from="CenterContainer/Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/Button2" to="." method="_on_button_2_pressed"]
