@@ -193,6 +193,28 @@ func _on_died() -> void:
 	velocity = Vector2.ZERO
 	
 	_spawn_xp_orb()
+
+	# registra morte no World para contagem de kills (rare drops)
+	# procura o nó World pelo grupo (mais robusto que procurar por nome)
+	var worlds: Array = get_tree().get_nodes_in_group("world")
+	if worlds.size() > 0:
+		var world = worlds[0]
+		if world and world.has_method("register_enemy_death"):
+			world.register_enemy_death(global_position)
+
+	# Drop de item de vida (chance definida no EnemyData)
+	if data and data.drop_life_scene and data.drop_life_chance > 0.0:
+		var r: float = randf()
+		if r <= data.drop_life_chance:
+			var drop = data.drop_life_scene.instantiate()
+			if drop:
+				drop.global_position = global_position
+				# tenta aplicar a quantidade de cura ao objeto de drop, se suportado
+				if "heal_amount" in drop:
+					drop.heal_amount = data.drop_life_amount
+				elif drop.has_method("set_heal_amount"):
+					drop.set_heal_amount(data.drop_life_amount)
+				get_tree().current_scene.call_deferred("add_child", drop)
 	
 	if anim_node:
 		_play_death_animation()

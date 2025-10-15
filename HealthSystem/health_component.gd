@@ -14,6 +14,14 @@ var status: HealthStatus
 func damage(value: float) -> void:
 	status.damage(value)
 
+
+func heal(value: float) -> void:
+	# Heal via HealthStatus to keep signals consistent
+	if not status:
+		return
+	var new_h: float = float(status.CurrentHealth) + float(value)
+	status.CurrentHealth = min(new_h, float(status.MaxHealth))
+
 # API esperada: take_damage/current_health
 
 func _ready() -> void:

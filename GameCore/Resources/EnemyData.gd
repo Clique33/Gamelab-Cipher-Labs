@@ -14,4 +14,9 @@ class_name EnemyData
 @export var collision_layer: int = 1
 @export var collision_mask: int = 1
 
+# Drop configuration
+@export var drop_life_chance: float = 0.0 # 0.0..1.0 chance de dropar item de vida ao morrer
+@export var drop_life_scene: PackedScene = null # cena do item que recupera vida
+@export var drop_life_amount: float = 20.0 # quanto HP o item recupera
+
 # Add more fields as needed (drops, AI type, weapon, etc.)

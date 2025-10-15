@@ -117,6 +117,10 @@ func _ensure_action_mouse(action: StringName, button_index: int) -> void:
 func _on_health_died() -> void:
 	die()
 
+
+func get_health_node() -> HealthComponent:
+	return health_node
+
 func _on_health_changed(new_health: float) -> void:
 	# Toca animação hurt quando a vida muda (dano ou cura)
 	_is_taking_damage = true

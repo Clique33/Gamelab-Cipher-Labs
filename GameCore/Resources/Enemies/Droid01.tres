@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://dplqjs4hahgsv"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=5 format=3 uid="uid://dplqjs4hahgsv"]
 
 [ext_resource type="Script" uid="uid://bkyra1md41n4s" path="res://GameCore/Resources/EnemyData.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cwxolprdueh62" path="res://GameCore/Scenes/Medkit.tscn" id="1_ckpur"]
 [ext_resource type="Resource" uid="uid://droid01health" path="res://GameCore/Resources/Enemies/Healths/Droid01Health.tres" id="2"]
-[ext_resource type="PackedScene" uid="uid://bc16geukmwhn4" path="res://GameCore/Scenes/XPOrb.tscn" id="3_aal3a"]
+[ext_resource type="PackedScene" uid="uid://bc16geukmwhn4" path="res://GameCore/Scenes/XpOrb.tscn" id="3_aal3a"]
 
 [resource]
 script = ExtResource("1")
@@ -16,3 +17,6 @@ xp_amount = 1
 xp_orb_scene = ExtResource("3_aal3a")
 collision_layer = 2
 collision_mask = 17
+drop_life_chance = 1.0
+drop_life_scene = ExtResource("1_ckpur")
+drop_life_amount = 20.0
