@@ -15,6 +15,10 @@ run/main_scene="uid://bo4i45pyemgfv"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[dotnet]
+
+project/assembly_name="Rogue-like-clone"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
