@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://k74vmnv4fgrc"]
+[gd_scene load_steps=9 format=3 uid="uid://k74vmnv4fgrc"]
 
 [ext_resource type="Script" uid="uid://c5wodwrcs5bcb" path="res://GameCore/Scripts/Player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bl1ogqah5f4xc" path="res://HealthSystem/HealthComponent.tscn" id="2"]
 [ext_resource type="Resource" uid="uid://bsdog3vykel64" path="res://GameCore/Resources/PlayerHealth.tres" id="3"]
+[ext_resource type="Script" uid="uid://ba6upblefpbpc" path="res://GameCore/Scenes/weapons.gd" id="4_yrc16"]
 
 [sub_resource type="Gradient" id="Gradient_bxrbu"]
 offsets = PackedFloat32Array(1)
@@ -39,3 +40,7 @@ collision_mask = 0
 
 [node name="BlockerShape" type="CollisionShape2D" parent="Blocker"]
 shape = SubResource("RectangleShape2D_yrc16")
+
+[node name="Weapons" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("4_yrc16")
+player = NodePath("..")

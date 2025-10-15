@@ -15,6 +15,10 @@ run/main_scene="res://GameCore/Scenes/World.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+UpgradesManager="*res://Upgrades/UpgradesManager.gd"
+
 [dotnet]
 
 project/assembly_name="Rogue-like-clone"

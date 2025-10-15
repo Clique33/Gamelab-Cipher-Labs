@@ -5,9 +5,9 @@
 
 [node name="MachineGun" type="Node2D" node_paths=PackedStringArray("origin")]
 script = ExtResource("1_07xkp")
+origin = NodePath("weapon_visual/origin")
 projectile_scene = ExtResource("2_f7aom")
 is_mouse_direction = true
-origin = NodePath("weapon_visual/origin")
 cooldown = 0.215
 damage = 10.0
 crit_chance = 0.05
