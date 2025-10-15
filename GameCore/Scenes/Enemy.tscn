@@ -1,27 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw0s6d8qxcnet"]
+[gd_scene load_steps=5 format=3 uid="uid://bw0s6d8qxcnet"]
 
 [ext_resource type="Script" uid="uid://cq0hhl7ixu3xr" path="res://GameCore/Scripts/Enemy.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bl1ogqah5f4xc" path="res://HealthSystem/HealthComponent.tscn" id="2"]
 [ext_resource type="Resource" uid="uid://d2fka02gd4p0c" path="res://GameCore/Resources/EnemyHealth.tres" id="3"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ovtem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovtem"]
 size = Vector2(64, 64)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 17
+collision_mask = 16
 script = ExtResource("1")
 move_speed = 90.0
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1.19209e-07)
-scale = Vector2(3.5, 3.68919)
-texture = SubResource("PlaceholderTexture2D_ovtem")
+animation = &""
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_ovtem")
 
 [node name="Health" parent="." instance=ExtResource("2")]
@@ -31,7 +27,6 @@ initial_status = ExtResource("3")
 collision_layer = 0
 
 [node name="DamageShape" type="CollisionShape2D" parent="DamageArea"]
-visible = false
 scale = Vector2(1.05, 1.05)
 shape = SubResource("RectangleShape2D_ovtem")
 

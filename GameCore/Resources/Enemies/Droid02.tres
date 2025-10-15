@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://cank78xpgwfpk"]
+
+[ext_resource type="Script" uid="uid://bkyra1md41n4s" path="res://GameCore/Resources/EnemyData.gd" id="1"]
+[ext_resource type="Resource" uid="uid://droid02health" path="res://GameCore/Resources/Enemies/Healths/Droid02Health.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Droid02"
+health_status = ExtResource("2")
+move_speed = 60.0
+stop_distance = 20.0
+touch_damage = 10.0
+touch_interval = 0.8
+xp_amount = 3
+collision_layer = 2
+collision_mask = 17
