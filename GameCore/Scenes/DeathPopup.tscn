@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo60ykqgqryrf"]
+
+[ext_resource type="Script" uid="uid://dmcupjpj0dr04" path="res://GameCore/Scripts/DeathPopup.gd" id="1_t2qvq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xn0ty"]
+font_size = 75
+
+[sub_resource type="LabelSettings" id="LabelSettings_t2qvq"]
+font_size = 30
+
+[node name="DeathPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t2qvq")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/Panel"]
+layout_mode = 2
+offset_left = -210.0
+offset_top = -274.0
+offset_right = 196.0
+offset_bottom = -171.0
+text = "DERROTA"
+label_settings = SubResource("LabelSettings_xn0ty")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CenterContainer/Panel"]
+layout_mode = 2
+offset_left = -496.0
+offset_top = -148.0
+offset_right = 497.0
+offset_bottom = -106.0
+text = "Você não conseguiu resistir contra a onda inimiga dessa vez."
+label_settings = SubResource("LabelSettings_t2qvq")
+horizontal_alignment = 1
+
+[node name="OK" type="Button" parent="CenterContainer/Panel"]
+layout_mode = 2
+offset_left = -196.0
+offset_top = 99.0
+offset_right = 200.0
+offset_bottom = 167.0
+text = "Jogar Novamente"
+
+[node name="OK2" type="Button" parent="CenterContainer/Panel"]
+layout_mode = 2
+offset_left = -197.0
+offset_top = 11.0
+offset_right = 199.0
+offset_bottom = 79.0
+text = "Voltar ao menu"
