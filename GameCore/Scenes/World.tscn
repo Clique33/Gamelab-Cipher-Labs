@@ -26,8 +26,6 @@ DeathPopupScene = ExtResource("4_2cfxq")
 [node name="VictoryPopup" parent="." instance=ExtResource("3_e4uwn")]
 
 [node name="DeathPopup" parent="." instance=ExtResource("4_2cfxq")]
-world_scene_path = null
-main_menu_scene_path = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

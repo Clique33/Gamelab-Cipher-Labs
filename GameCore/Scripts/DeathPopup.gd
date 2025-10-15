@@ -2,7 +2,7 @@ extends Control
 class_name DeathPopup
 # --- Exporta os caminhos das cenas ---
 @export var world_scene_path: String = "res://gamecore/scenes/world.tscn"
-@export var main_menu_scene_path: String = "res://gamecore/scenes/menu/mainmenu.tscn"
+@export var main_menu_scene_path: String = "res://gamecore/scenes/menus/mainmenu.tscn"
 # --- Nós internos ---
 var ok_button: Button
 var ok2_button: Button
