@@ -17,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t2qvq")
 world_scene_path = "res://gamecore/scenes/world.tscn"
-main_menu_scene_path = "res://gamecore/scenes/menu/mainmenu.tscnmenu.tscn"
+main_menu_scene_path = "res://gamecore/scenes/menu/mainmenu.tscn"
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

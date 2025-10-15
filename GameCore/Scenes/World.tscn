@@ -14,14 +14,20 @@
 script = ExtResource("2")
 spawn_radius = 200.0
 spawn_margin = 200.0
-min_spawn_distance = 500.0
+min_spawn_distance = 550.0
+min_spawn_interval = 0.2
 time_to_max_difficulty = 200.0
 rare_drop_scene = ExtResource("2_fqnur")
 rare_drop_chance = 0.035
+rare_drop_every = 100
+VictoryPopupScene = ExtResource("3_e4uwn")
+DeathPopupScene = ExtResource("4_2cfxq")
 
 [node name="VictoryPopup" parent="." instance=ExtResource("3_e4uwn")]
 
 [node name="DeathPopup" parent="." instance=ExtResource("4_2cfxq")]
+world_scene_path = null
+main_menu_scene_path = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
