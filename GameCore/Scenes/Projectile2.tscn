@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://xt8l3mq5qsqt"]
+
+[ext_resource type="Script" uid="uid://78e23e6w4n8u" path="res://GameCore/Scripts/Projectile.gd" id="1_vkq2s"]
+[ext_resource type="Texture2D" uid="uid://bx5bph36s3x31" path="res://GameCore/Sprites/02.png" id="2_43kgs"]
+[ext_resource type="AudioStream" uid="uid://35hx5jjfl4mv" path="res://GameCore/Sfx/SCIWeap_Sci-Fi Weapon Fire 10_Eric Berzins_USFW.wav" id="2_xiokp"]
+[ext_resource type="AudioStream" uid="uid://cib4qu7yfd3me" path="res://GameCore/Sfx/SCIWeap_Sci-Fi Weapon Fire 6_Eric Berzins_USFW.wav" id="4_oui2t"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 4.0
+
+[node name="Projectile" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_vkq2s")
+shoot_sound = ExtResource("2_xiokp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_43kgs")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_oui2t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

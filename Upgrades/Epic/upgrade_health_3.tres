@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://db4xn8lw6vdf5" path="res://Upgrades/UpgradeData.gd" id="1_upg"]
+
+[resource]
+script = ExtResource("1_upg")
+type = 1
+title = "Vida Máxima (G)"
+description = "+75 de Vida Máxima."
+rarity = 2
+stat_key = &"health_node/max_health"
+stat_value = 75.0
+is_multiplier = false

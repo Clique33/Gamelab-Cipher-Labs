@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2ifihisc1sff"]
+
+[ext_resource type="Script" uid="uid://dywiwjn1g34h3" path="res://Upgrades/UpgradeCard.gd" id="1_6p3e3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07t83"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.501961, 0.501961, 0.501961, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="UpgradeCard" type="PanelContainer"]
+process_mode = 2
+custom_minimum_size = Vector2(200, 0)
+offset_right = 554.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_07t83")
+script = ExtResource("1_6p3e3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Título do Upgrade"
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Esta é a descrição do upgrade que explica o que ele faz."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="RarityLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+horizontal_alignment = 1
+vertical_alignment = 1

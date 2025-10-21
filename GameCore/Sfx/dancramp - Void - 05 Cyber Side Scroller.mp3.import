@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://baj2qpb3576gt"
+path="res://.godot/imported/dancramp - Void - 05 Cyber Side Scroller.mp3-c817a6aaac67c06ad16298aa0d223031.mp3str"
+
+[deps]
+
+source_file="res://GameCore/Sfx/dancramp - Void - 05 Cyber Side Scroller.mp3"
+dest_files=["res://.godot/imported/dancramp - Void - 05 Cyber Side Scroller.mp3-c817a6aaac67c06ad16298aa0d223031.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,8 +1,8 @@
 extends Control
 class_name DeathPopup
 # --- Exporta os caminhos das cenas ---
-@export var world_scene_path: String = "res://gamecore/scenes/world.tscn"
-@export var main_menu_scene_path: String = "res://gamecore/scenes/menus/mainmenu.tscn"
+@export var world_scene_path: String = "res://GameCore/Scenes/World.tscn"
+@export var main_menu_scene_path: String = "res://GameCore/Scenes/Menus/MainMenu.tscn"
 # --- Nós internos ---
 var ok_button: Button
 var ok2_button: Button
@@ -12,7 +12,6 @@ var stats_label: Label
 func _ready() -> void:
 	# Localiza os nós dinamicamente
 	title_label = $CenterContainer/Panel/Title
-	stats_label = $CenterContainer/Panel/Stats
 	ok_button = $CenterContainer/Panel/OK
 	ok2_button = $CenterContainer/Panel/OK2
 	# Conecta sinais dos botões

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxdtehts2s7a"]
+
+[ext_resource type="Script" uid="uid://bpkpky7kmbrs3" path="res://GameCore/Scripts/DamageIndicator.gd" id="1_xcyk1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ff38e"]
+font_size = 8
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.588235)
+
+[node name="DamageIndicator" type="Label"]
+offset_right = 53.0
+offset_bottom = 33.0
+text = "-999"
+label_settings = SubResource("LabelSettings_ff38e")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_xcyk1")
+move_amount = -20.0

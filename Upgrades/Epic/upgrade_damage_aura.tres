@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://xg3yenqmi568"]
+
+[ext_resource type="Script" uid="uid://db4xn8lw6vdf5" path="res://Upgrades/UpgradeData.gd" id="1_upg"]
+[ext_resource type="PackedScene" uid="uid://b23l4g0a1q2f3" path="res://Weapons/scenes/WeaponDamageAura.tscn" id="2_wea"]
+
+[resource]
+script = ExtResource("1_upg")
+type = 0
+title = "Aura de Dano"
+description = "Causa dano contínuo a inimigos muito próximos."
+rarity = 2
+weapon_scene = ExtResource("2_wea")
+stat_key = &""
+stat_value = 0.0
+is_multiplier = true
+weapon_id = &""

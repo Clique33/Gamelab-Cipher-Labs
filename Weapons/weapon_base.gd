@@ -1,7 +1,6 @@
 class_name WeaponBase
 extends Node2D
 
-
 @export var cooldown: float
 @export var damage: float
 @export var crit_chance: float
@@ -11,7 +10,7 @@ var curr_cooldown: float = 0.0
 func _process(delta: float) -> void:
 	curr_cooldown -= delta
 	if curr_cooldown <= 0:
-		curr_cooldown = cooldown
+		curr_cooldown += cooldown
 		attack()
 
 func attack() -> void:

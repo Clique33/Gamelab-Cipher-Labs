@@ -187,13 +187,13 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovtem"]
-size = Vector2(30, 19)
+[sub_resource type="CircleShape2D" id="CircleShape2D_4j8oh"]
+radius = 17.0074
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7uouf"]
 size = Vector2(28.5714, 18.0953)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_7uouf")
@@ -206,7 +206,7 @@ animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 14.5)
-shape = SubResource("RectangleShape2D_ovtem")
+shape = SubResource("CircleShape2D_4j8oh")
 
 [node name="Health" parent="." instance=ExtResource("2")]
 visible = false
