@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3]
+
+[ext_resource type="Script" uid="uid://db4xn8lw6vdf5" path="res://Upgrades/UpgradeData.gd" id="1_upg"]
+[ext_resource type="PackedScene" uid="uid://ddyphq26065s5" path="res://Weapons/scenes/WeaponRandomAOE.tscn" id="2_wea"]
+
+[resource]
+script = ExtResource("1_upg")
+type = 0
+title = "Bomba Aleatória"
+description = "Lança explosões em área em locais aleatórios próximos a você."
+rarity = 1
+weapon_scene = ExtResource("2_wea")

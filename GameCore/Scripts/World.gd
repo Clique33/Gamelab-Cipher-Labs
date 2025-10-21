@@ -36,10 +36,11 @@ var _allow_spawns: bool = true
 @export var DeathPopupScene: PackedScene = null
 
 func _ready() -> void:
+	UpgradeManager.start_new_run()
 	if camera and player:
 		camera.make_current()
 		camera.position = player.position
-
+	
 	# expose World via group for other nodes to find it reliably
 	add_to_group("world")
 
@@ -92,16 +93,88 @@ func _draw() -> void:
 		draw_circle(local_p, 7.0, Color(1, 1, 0, 0.9))
 
 func _spawn_loop() -> void:
-	# loop assíncrono de spawn que reduz o intervalo ao longo do tempo
-	while not _game_won_flag and _allow_spawns:
-		var difficulty: float = clamp(_elapsed_time / max(0.0001, time_to_max_difficulty), 0.0, 1.0)
+	while not _game_won_flag:
+		# Espera se spawn desativado ou jogo pausado
+		if not _allow_spawns or get_tree().paused:
+			await get_tree().process_frame
+			continue
+
+		# --- Cálculo da dificuldade ---
+		# Normaliza tempo entre 0 e 1
+		var t: float = clamp(_elapsed_time / max(0.0001, time_to_max_difficulty), 0.0, 1.0)
+		
+		# Aplica curva exponencial para spawn rate: começa lento, acelera mais rápido depois
+		var difficulty: float = pow(t, 1.5)  # ajuste o expoente para controlar progressão
+
+		# Intervalo de spawn decresce com dificuldade (lerp exponencial)
 		var current_interval: float = lerp(initial_spawn_interval, min_spawn_interval, difficulty)
+
+		# Spawn timer
 		await get_tree().create_timer(current_interval).timeout
-		# If spawns were disabled while waiting for the timer, exit immediately
-		if not _allow_spawns or _game_won_flag:
-			break
+
+		# Checa de novo se pode spawnar
+		if not _allow_spawns or _game_won_flag or get_tree().paused:
+			continue
+
 		_elapsed_time += current_interval
-		_spawn_enemy(difficulty)
+
+		# --- Determina inimigo a spawnar com probabilidade dinâmica ---
+		_spawn_enemy_with_difficulty(difficulty)
+
+
+func _spawn_enemy_with_difficulty(difficulty: float) -> void:
+	var r: float = randf()
+
+	# Probabilidades dinâmicas
+	var p_weak: float = lerp(0.7, 0.4, difficulty)    # inimigo fraco
+	var p_medium: float = lerp(0.9, 0.7, difficulty)  # inimigo médio
+	# Inimigo forte = resto (1.0 - p_medium)
+
+	var idx: int = 0
+	if r < p_weak:
+		idx = 0
+	elif r < p_medium:
+		idx = 2
+	else:
+		idx = 1
+
+	var base_data: Resource = null
+	if idx >= 0 and idx < enemy_data_list.size():
+		base_data = enemy_data_list[idx]
+
+	# Instancia inimigo
+	var chosen_scene: PackedScene = enemy_scenes[idx] if idx < enemy_scenes.size() else enemy_scene
+	var e = chosen_scene.instantiate()
+
+	# Escala stats com dificuldade de forma não-linear
+	if base_data:
+		var data_copy = base_data.duplicate(true)
+		var scale_factor: float = 1.0 + pow(difficulty, 1.3) * 0.8  # progressão suave exponencial
+		if data_copy.has_method("set"):
+			if "move_speed" in data_copy:
+				data_copy.move_speed *= scale_factor
+			if "touch_damage" in data_copy:
+				data_copy.touch_damage *= scale_factor
+			if "xp_amount" in data_copy:
+				data_copy.xp_amount = int(ceil(float(data_copy.xp_amount) * (1.0 + difficulty * 0.5)))
+			if "health_status" in data_copy and data_copy.health_status:
+				var hs = data_copy.health_status.duplicate(true)
+				if "MaxHealth" in hs:
+					hs.MaxHealth *= scale_factor
+					hs.CurrentHealth *= scale_factor
+				data_copy.health_status = hs
+
+		if "data" in e:
+			e.data = data_copy
+
+	# Determina spawn
+	var spawn_pos = _find_valid_spawn_pos()
+	if spawn_pos == Vector2.ZERO:
+		spawn_pos = player.global_position + Vector2.RIGHT.rotated(randf() * TAU) * spawn_radius
+
+	e.global_position = spawn_pos
+	add_child(e)
+
 
 func _spawn_enemy(difficulty: float = 0.0) -> void:
 	# Prevent spawning if the game has been won and spawns are disabled

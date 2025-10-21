@@ -150,9 +150,9 @@ radius = 13.3333
 height = 34.2857
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8a58f"]
-radius = 8.06226
+radius = 7.03125
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_g86kh")
@@ -175,6 +175,7 @@ scale = Vector2(1.05, 1.05)
 shape = SubResource("CapsuleShape2D_g86kh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.56, 2.56)
 shape = SubResource("CircleShape2D_8a58f")
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_body_entered"]

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://db4xn8lw6vdf5" path="res://Upgrades/UpgradeData.gd" id="1_upg"]
+
+[resource]
+script = ExtResource("1_upg")
+type = 3
+title = "Shotgun: Dano (P)"
+description = "+15% de dano APENAS para a Shotgun."
+rarity = 0
+stat_key = &"damage"
+stat_value = 1.15
+is_multiplier = true
+weapon_id = &"ShotgunScene"

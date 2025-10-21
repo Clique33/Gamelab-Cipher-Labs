@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjv4igndmrw6i"
+path="res://.godot/imported/29 Retro Enemy Ship #4.mp3-f89be30ad0bae8d940da2804fdcdcd0d.mp3str"
+
+[deps]
+
+source_file="res://GameCore/Sfx/29 Retro Enemy Ship #4.mp3"
+dest_files=["res://.godot/imported/29 Retro Enemy Ship #4.mp3-f89be30ad0bae8d940da2804fdcdcd0d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

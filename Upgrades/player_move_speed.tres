@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://bleyff85g3q4d"]
+
+[ext_resource type="Script" uid="uid://db4xn8lw6vdf5" path="res://Upgrades/UpgradeData.gd" id="1_vprsp"]
+
+[resource]
+script = ExtResource("1_vprsp")
+type = 1
+title = "Velocidade de Movimento"
+description = "+10% de velocidade de movimento."
+rarity = 0
+stat_key = &"move_speed"
+stat_value = 1.1
+is_multiplier = true
+metadata/_custom_type_script = "uid://db4xn8lw6vdf5"

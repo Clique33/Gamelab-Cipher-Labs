@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddyphq26065s5"]
+
+[ext_resource type="Script" uid="uid://ctlav08iv03w7" path="res://Weapons/WeaponRandomAOE.gd" id="1_456w4"]
+[ext_resource type="PackedScene" uid="uid://b6g7i0h54c25f" path="res://Weapons/scenes/RandomCircleAOE.tscn" id="2_c45i5"]
+
+[node name="WeaponRandomAOE" type="Node2D"]
+script = ExtResource("1_456w4")
+aoe_scene = ExtResource("2_c45i5")
+spawn_radius_min = 100.0
+cooldown = 2.0
+damage = 100.0
+crit_chance = 1.5
+crit_multiplier = 2.0

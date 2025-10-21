@@ -1,26 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm4oyb76eidld"]
+[gd_scene load_steps=6 format=3 uid="uid://dm4oyb76eidld"]
 
 [ext_resource type="Script" uid="uid://78e23e6w4n8u" path="res://GameCore/Scripts/Projectile.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://35hx5jjfl4mv" path="res://GameCore/Sfx/SCIWeap_Sci-Fi Weapon Fire 10_Eric Berzins_USFW.wav" id="2_6ot88"]
+[ext_resource type="Texture2D" uid="uid://cy0yu1phhas5n" path="res://GameCore/Sprites/01.png" id="2_i3lfw"]
+[ext_resource type="AudioStream" uid="uid://dak8riqlsvoq0" path="res://GameCore/Sfx/SCIWeap_Sci-Fi Weapon Fire 9_Eric Berzins_USFW.wav" id="3_s8552"]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 4.0
 
-[sub_resource type="Gradient" id="Gradient_yrn0u"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_i3lfw"]
-gradient = SubResource("Gradient_yrn0u")
-
 [node name="Projectile" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1")
+shoot_sound = ExtResource("2_6ot88")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 0.2, 1)
-position = Vector2(-5.96046e-08, -2.98023e-08)
-scale = Vector2(0.0839844, 0.0839844)
-texture = SubResource("GradientTexture2D_i3lfw")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_i3lfw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_s8552")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

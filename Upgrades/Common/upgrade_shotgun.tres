@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://d1x38sm8xpo08"]
+
+[ext_resource type="Script" uid="uid://db4xn8lw6vdf5" path="res://Upgrades/UpgradeData.gd" id="1_hwxjj"]
+[ext_resource type="PackedScene" uid="uid://dyc4k5ihwqo3v" path="res://Weapons/scenes/shotgun_scene.tscn" id="2_yag4y"]
+
+[resource]
+script = ExtResource("1_hwxjj")
+type = 0
+title = "Shotgun"
+description = "Dispara um cone de dano."
+rarity = 2
+weapon_scene = ExtResource("2_yag4y")
+stat_key = &""
+stat_value = 0.0
+is_multiplier = true
+metadata/_custom_type_script = "uid://db4xn8lw6vdf5"
+override_stats = {}

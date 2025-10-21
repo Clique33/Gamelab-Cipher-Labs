@@ -9,7 +9,7 @@ class_name EnemyData
 @export var touch_damage: float = 5.0
 @export var touch_interval: float = 0.5
 @export var xp_amount: int = 1
-@export var xp_orb_scene: PackedScene = preload("res://GameCore/Scenes/XPOrb.tscn")
+@export var xp_orb_scene: PackedScene = preload("res://GameCore/Scenes/XpOrb.tscn")
 @export var sprite_scene: PackedScene = null # opcional: cena com AnimatedSprite2D/AnimatedSprite
 @export var collision_layer: int = 1
 @export var collision_mask: int = 1
