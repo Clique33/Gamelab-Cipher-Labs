@@ -36,6 +36,7 @@ border_color = Color(0.447059, 0.188235, 0.141176, 1)
 
 [resource]
 Button/colors/font_color = Color(0.984314, 0.835294, 0.329412, 1)
+Button/font_sizes/font_size = 25
 Button/fonts/font = ExtResource("1_7pxgf")
 Button/styles/focus = SubResource("StyleBoxFlat_ji00l")
 Button/styles/hover = SubResource("StyleBoxFlat_ywcum")
