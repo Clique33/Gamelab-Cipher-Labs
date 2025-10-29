@@ -11,12 +11,6 @@ var stats_label: Label
 
 func _ready() -> void:
 	# Localiza os nós dinamicamente
-	title_label = $CenterContainer/Panel/Title
-	ok_button = $CenterContainer/Panel/OK
-	ok2_button = $CenterContainer/Panel/OK2
-	# Conecta sinais dos botões
-	ok_button.pressed.connect(Callable(self, "_on_ok_pressed"))
-	ok2_button.pressed.connect(Callable(self, "_on_ok2_pressed"))
 	# Permite que o popup e botões funcionem mesmo com o jogo pausado
 	_set_subtree_process_mode(self)
 	visible = false
@@ -35,10 +29,7 @@ func play_death_effects() -> void:
 	_set_subtree_process_mode(self)
 	get_tree().paused = true
 	visible = true
-	# Emite partículas se houver
-	var pnode := $CenterContainer/Panel/Particles
-	if pnode and pnode is CPUParticles2D:
-		pnode.emitting = true
+	$anim.play("appear")
 
 func _set_subtree_process_mode(node: Node) -> void:
 	if node == null:
