@@ -5,12 +5,6 @@ const GRAY_HEALTH_DELAY = 0.5
 @onready var current_ui: ProgressBar = $current_bar
 @onready var gray_ui: ProgressBar = $gray_health
 
-func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("ui_up"):
-		handle_change(current_ui.value + 1)
-	if Input.is_action_pressed("ui_down"):
-		handle_change(current_ui.value - 1)
-
 func handle_change(new_value: float):
 	var diff = new_value - current_ui.value
 	current_ui.value = new_value
