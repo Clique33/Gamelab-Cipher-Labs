@@ -21,6 +21,10 @@ config/icon="res://icon.svg"
 
 UpgradeManager="*res://Upgrades/UpgradeManager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="Rogue-like-clone"
