@@ -1,0 +1,44 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://pm5qrltkxppx"]
+
+[ext_resource type="FontFile" uid="uid://bj1lr7ptxj7eq" path="res://GameCore/Sprites/ShareTechMono-Regular.ttf" id="1_7pxgf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ji00l"]
+bg_color = Color(0.776471, 0.345098, 0.0509804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.447059, 0.188235, 0.141176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywcum"]
+bg_color = Color(0.236625, 0.355654, 0.445175, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0745098, 0.12549, 0.164706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqc08"]
+bg_color = Color(0.129412, 0.207843, 0.266667, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0745098, 0.12549, 0.164706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4r5s"]
+bg_color = Color(0.776471, 0.345098, 0.0509804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.447059, 0.188235, 0.141176, 1)
+
+[resource]
+Button/colors/font_color = Color(0.984314, 0.835294, 0.329412, 1)
+Button/fonts/font = ExtResource("1_7pxgf")
+Button/styles/focus = SubResource("StyleBoxFlat_ji00l")
+Button/styles/hover = SubResource("StyleBoxFlat_ywcum")
+Button/styles/hover_pressed = null
+Button/styles/normal = SubResource("StyleBoxFlat_iqc08")
+Button/styles/pressed = SubResource("StyleBoxFlat_f4r5s")
