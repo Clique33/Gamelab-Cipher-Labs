@@ -1,10 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://bo4i45pyemgfv"]
+[gd_scene load_steps=21 format=3 uid="uid://bo4i45pyemgfv"]
 
 [ext_resource type="Script" uid="uid://bdy0man1m60w2" path="res://GameCore/Scripts/Menus/main_menu.gd" id="1_r3cns"]
 [ext_resource type="Texture2D" uid="uid://b7nwh2byswity" path="res://GameCore/Sprites/0eae87a1-b490-4de6-a9c7-f23bab34f3da.png" id="2_kppqf"]
 [ext_resource type="Theme" uid="uid://b4m861js4di80" path="res://GameCore/Scenes/Menus/MainMenu.tres" id="3_42vxf"]
 [ext_resource type="AudioStream" uid="uid://cecmq82pue1ep" path="res://GameCore/Sfx/dancramp - Void - 01 It Is What It Is.mp3" id="4_bmqnr"]
-[ext_resource type="Texture2D" uid="uid://fuxudp0hf0ae" path="res://GameCore/Sprites/Player/cyber prisoner idle-Sheet.png" id="5_4pi3e"]
+[ext_resource type="Texture2D" uid="uid://bad1s7p5v0tw1" path="res://GameCore/Sprites/background_main.jpg" id="5_02jv1"]
+[ext_resource type="Texture2D" uid="uid://c6b1lm0gmqp4" path="res://GameCore/Sprites/banner-removebg-preview.png" id="6_2ghyc"]
+[ext_resource type="Texture2D" uid="uid://d2kobae26awn7" path="res://GameCore/Sprites/personagem_menu.png" id="7_ji00l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kppqf"]
 font_size = 75
@@ -104,70 +106,6 @@ HSlider/styles/grabber_area = SubResource("StyleBoxFlat_3nyoo")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_0bsww")
 HSlider/styles/slider = SubResource("StyleBoxFlat_upp80")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ywcum"]
-atlas = ExtResource("5_4pi3e")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iqc08"]
-atlas = ExtResource("5_4pi3e")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f4r5s"]
-atlas = ExtResource("5_4pi3e")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nscm8"]
-atlas = ExtResource("5_4pi3e")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2p7u0"]
-atlas = ExtResource("5_4pi3e")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ndi1x"]
-atlas = ExtResource("5_4pi3e")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u7k86"]
-atlas = ExtResource("5_4pi3e")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_udfhs"]
-atlas = ExtResource("5_4pi3e")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8l4e5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ywcum")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iqc08")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f4r5s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nscm8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2p7u0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ndi1x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u7k86")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_udfhs")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -176,11 +114,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r3cns")
-
-[node name="BG" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 visible = false
@@ -272,19 +205,34 @@ stream = ExtResource("4_bmqnr")
 autoplay = true
 parameters/looping = true
 
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("5_02jv1")
+expand_mode = 2
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 100
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 6
 
 [node name="logo" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+texture = ExtResource("6_2ghyc")
 
 [node name="play_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -304,12 +252,9 @@ text = "Créditos
 layout_mode = 2
 text = "Sair do Jogo"
 
-[node name="Personagem" type="AnimatedSprite2D" parent="MarginContainer/HBoxContainer"]
-position = Vector2(383, 84)
-scale = Vector2(-2.84375, 2.84375)
-sprite_frames = SubResource("SpriteFrames_8l4e5")
-frame = 2
-frame_progress = 0.158248
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_ji00l")
 
 [connection signal="pressed" from="CenterContainer/Panel/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CenterContainer/Panel/Button2" to="." method="_on_button_2_pressed"]
