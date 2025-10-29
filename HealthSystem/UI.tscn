@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://jtc261umq41f" path="res://HealthSystem/ui.gd" id="1_fi7s8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fi7s8"]
+bg_color = Color(0.933327, 3.27289e-06, 9.62615e-07, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
