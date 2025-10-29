@@ -5,6 +5,12 @@ const GRAY_HEALTH_DELAY = 0.5
 @onready var current_ui: ProgressBar = $current_bar
 @onready var gray_ui: ProgressBar = $gray_health
 
+func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("ui_up"):
+		handle_change(current_ui.value + 1)
+	if Input.is_action_pressed("ui_down"):
+		handle_change(current_ui.value - 1)
+
 func handle_change(new_value: float):
 	var diff = new_value - current_ui.value
 	current_ui.value = new_value
@@ -31,3 +37,15 @@ func handle_gray_health(value: float) -> DamageTimer:
 	timer.start()
 	timer.timeout_value.connect(update_gray_ui)
 	return timer
+
+
+func _on_current_bar_value_changed(value: float) -> void:
+	var style :StyleBoxFlat = current_ui.get_theme_stylebox("fill") 
+	if current_ui.value == current_ui.max_value:
+		style.border_width_right = 2
+		style.corner_radius_bottom_right = 5
+		style.corner_radius_top_right = 5
+	else:
+		style.border_width_right = 0
+		style.corner_radius_bottom_right = 0
+		style.corner_radius_top_right = 0
