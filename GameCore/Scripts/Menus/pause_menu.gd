@@ -14,8 +14,7 @@ func handle_pause():
 	$"../AudioStreamPlayer2D".stream_paused = visible
 
 func _on_resume_btn_pressed() -> void:
-	visible = false
-	get_tree().paused = false
+	handle_pause()
 
 func _on_quit_btn_pressed() -> void:
 	handle_pause()

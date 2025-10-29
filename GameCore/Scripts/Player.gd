@@ -29,6 +29,11 @@ signal player_died
 @onready var detection_area: Area2D = $DetectionArea
 var nearest_enemy: Node2D = null
 
+var move_to_target := false
+var target_position: Vector2 = Vector2.ZERO
+var click_threshold: float = 5.0 # tolerância para parar perto do ponto
+
+
 func _ready() -> void:
 	visible = true
 	add_to_group("player")
@@ -42,15 +47,30 @@ func _physics_process(delta: float) -> void:
 	_find_nearest_enemy()
 	_aim_upgrade_weapons()
 
-	_input_vec = Vector2(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	)
-	if _input_vec.length_squared() > 1.0:
+	# --- MOVIMENTO POR TECLADO ---
+	var input_x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	var input_y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	_input_vec = Vector2(input_x, input_y)
+
+	# --- PRIORIDADE: TECLADO ---
+	if _input_vec.length_squared() > 0.001:
+		move_to_target = false  # cancela movimento automático
 		_input_vec = _input_vec.normalized()
+	else:
+		# --- MOVIMENTO POR CLIQUE ---
+		if move_to_target:
+			var dir = target_position - global_position
+			if dir.length() > click_threshold:
+				_input_vec = dir.normalized()
+			else:
+				move_to_target = false
+				_input_vec = Vector2.ZERO
+
+	# --- MOVIMENTO FINAL ---
 	velocity = _input_vec * move_speed
 	move_and_slide()
-	
+
+	# --- RESTANTE DO PROCESSO ---
 	if _damage_cooldown > 0:
 		_damage_cooldown -= delta
 		if _damage_cooldown <= 0:
@@ -140,11 +160,28 @@ func _find_nearest_enemy() -> void:
 
 # ... (O resto das suas funções _ensure_input_actions, die, etc. permanecem iguais) ...
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("debug_level_up"):
-		if UpgradeManager:
-			print("DEBUG: Forçando a tela de upgrade!")
-			UpgradeManager.on_player_leveled_up(0)
-			get_viewport().set_input_as_handled()
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		target_position = get_global_mouse_position()
+		move_to_target = true
+
+		# --- EFEITO DE CLIQUE ---
+		var circle := ColorRect.new()
+		circle.color = Color(1, 1, 1, 0.8)  # branco semi-transparente
+		circle.size = Vector2(10, 10)       # começa pequeno
+		circle.position = target_position - circle.size / 2
+		circle.scale = Vector2(0.3, 0.3)
+		circle.pivot_offset = circle.size / 2
+		circle.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		circle.material = ShaderMaterial.new()
+
+		get_tree().current_scene.add_child(circle)
+
+		# anima o crescimento e o fade-out
+		var tween = create_tween()
+		tween.tween_property(circle, "scale", Vector2(1.2, 1.2), 0.25).set_trans(Tween.TRANS_SINE)
+		tween.tween_property(circle, "modulate:a", 0.0, 0.25)
+		tween.tween_callback(func(): circle.queue_free())
+
 			
 func _ensure_input_actions() -> void:
 	_ensure_action_key("move_up", KEY_W)
