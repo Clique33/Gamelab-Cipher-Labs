@@ -93,9 +93,10 @@ func _draw() -> void:
 		draw_circle(local_p, 7.0, Color(1, 1, 0, 0.9))
 
 func _spawn_loop() -> void:
-	while not _game_won_flag:
-		# Espera se spawn desativado ou jogo pausado
-		if not _allow_spawns or get_tree().paused:
+	while is_inside_tree() and not _game_won_flag:
+		if not _allow_spawns or get_tree() == null or get_tree().paused:
+			if get_tree() == null or !is_inside_tree():
+				return
 			await get_tree().process_frame
 			continue
 

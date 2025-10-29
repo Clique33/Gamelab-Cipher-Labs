@@ -1,8 +1,26 @@
 extends CanvasLayer
 @export var menu_principal : PackedScene
 
+func _ready(): 
+	visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		handle_pause()
+
+func handle_pause():
+	visible = !visible;
+	get_tree().paused = !get_tree().paused;
+	$"../AudioStreamPlayer2D".stream_paused = !$"../AudioStreamPlayer2D".stream_paused
+
 func _on_resume_btn_pressed() -> void:
-	pass # Replace with function body.
+	visible = false
+	get_tree().paused = false
 
 func _on_quit_btn_pressed() -> void:
-	get_tree().change_scene_to_packed(menu_principal)
+	handle_pause()
+	get_tree().change_scene_to_file("res://GameCore/Scenes/Menus/MainMenu.tscn")
+
+
+func _on_button_pressed() -> void:
+	handle_pause()
