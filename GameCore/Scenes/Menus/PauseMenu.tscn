@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://og2a57f75j2g"]
+
+[ext_resource type="Script" uid="uid://cdpmpuvnwg3bb" path="res://GameCore/Scripts/Menus/pause_menu.gd" id="1_1rruh"]
+[ext_resource type="Theme" uid="uid://pm5qrltkxppx" path="res://GameCore/Scenes/Menus/Buttons.tres" id="1_brfxl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_brfxl"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_1rruh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.294118)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -61.5
+offset_right = 147.0
+offset_bottom = 61.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="resume_btn" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("1_brfxl")
+text = "Retornar ao Jogo"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_brfxl")
+
+[node name="quit_btn" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("1_brfxl")
+text = "Sair para o menu"
+
+[connection signal="pressed" from="VBoxContainer/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]

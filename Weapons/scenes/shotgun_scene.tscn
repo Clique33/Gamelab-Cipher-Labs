@@ -445,13 +445,14 @@ animations = [{
 [node name="ShotgunScene" type="Node2D" node_paths=PackedStringArray("area") groups=["weapon"]]
 script = ExtResource("1_hxn7a")
 area = NodePath("weapon_visual/hurt_box")
-max_damage_distance = 10.0
+max_damage_distance = 2.0
+min_damage_distance = 2.0
 max_damage_multiplier = 2.0
 min_damage_multiplier = 0.7
 cooldown = 2.0
-damage = 30.0
+damage = 2.0
 crit_chance = 0.05
-crit_multiplier = 0.8
+crit_multiplier = 1.8
 
 [node name="weapon_visual" type="Sprite2D" parent="."]
 

@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxajbvnuy6oog"]
+[gd_scene load_steps=9 format=3 uid="uid://dxajbvnuy6oog"]
 
 [ext_resource type="Script" uid="uid://dyyj20gmjpcmx" path="res://GameCore/Scripts/VictoryPopup.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dolrsu2cv887i" path="res://GameCore/Sprites/vitoria.png" id="2_b5uy5"]
+[ext_resource type="Theme" uid="uid://pm5qrltkxppx" path="res://GameCore/Scenes/Menus/Buttons.tres" id="3_5bjbn"]
+[ext_resource type="FontFile" uid="uid://bj1lr7ptxj7eq" path="res://GameCore/Sprites/ShareTechMono-Regular.ttf" id="3_e2cbt"]
 
 [sub_resource type="LabelSettings" id="1"]
 font_size = 75
@@ -8,8 +11,17 @@ font_size = 75
 [sub_resource type="LabelSettings" id="2"]
 font_size = 30
 
-[sub_resource type="LabelSettings" id="3"]
-font_size = 35
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2cbt"]
+content_margin_top = 2048.0
+content_margin_bottom = 2048.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_5bjbn"]
+font = ExtResource("3_e2cbt")
+font_size = 25
+font_color = Color(0.929412, 0.796078, 0.32549, 1)
+outline_size = 8
+outline_color = Color(0.0745098, 0.12549, 0.164706, 1)
+shadow_size = 0
 
 [node name="VictoryPopup" type="Control"]
 layout_mode = 3
@@ -28,9 +40,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.5)
+color = Color(0, 0.0470588, 0, 0.654902)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,18 +74,6 @@ offset_bottom = -106.0
 text = "Você encontrou a chave de acesso e conseguiu escapar com sucesso!"
 label_settings = SubResource("2")
 
-[node name="Stats" type="Label" parent="CenterContainer/Panel"]
-layout_mode = 2
-offset_left = -113.0
-offset_top = -44.0
-offset_right = 112.0
-offset_bottom = 57.0
-text = "Mortes: 0
-Tempo: 00:00"
-label_settings = SubResource("3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="OK" type="Button" parent="CenterContainer/Panel"]
 layout_mode = 2
 offset_left = -196.0
@@ -89,5 +90,87 @@ offset_right = 199.0
 offset_bottom = 169.0
 text = "Voltar ao menu"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -414.0
+offset_top = -307.5
+offset_right = 414.0
+offset_bottom = 307.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="logo" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_b5uy5")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_e2cbt")
+
+[node name="Subtitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Você encontrou a chave de acesso e conseguiu escapar com sucesso!"
+label_settings = SubResource("LabelSettings_5bjbn")
+horizontal_alignment = 1
+
+[node name="HSeparator6" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_e2cbt")
+
+[node name="Stats" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_5bjbn")
+text = "Mortes: 0
+Tempo: 00:00"
+label_settings = SubResource("LabelSettings_5bjbn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator7" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_e2cbt")
+
+[node name="continue_btn" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_5bjbn")
+text = "⚠️ Continuar Rodada Atual
+(MODO EXPERIMENTAL, BUGS PODEM OCORRER)"
+
+[node name="play_btn2" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_5bjbn")
+text = "Jogar Novamente"
+
+[node name="quit_btn" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_5bjbn")
+text = "Retornar ao Menu Principal"
+
+[node name="HSeparator5" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_e2cbt")
+
 [connection signal="pressed" from="CenterContainer/Panel/OK" to="." method="_on_ok_pressed"]
 [connection signal="pressed" from="CenterContainer/Panel/OK2" to="." method="_on_ok2_pressed"]
+[connection signal="pressed" from="VBoxContainer/continue_btn" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/play_btn2" to="." method="_on_play_btn_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]

@@ -1,12 +1,199 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo60ykqgqryrf"]
+[gd_scene load_steps=10 format=3 uid="uid://bo60ykqgqryrf"]
 
 [ext_resource type="Script" uid="uid://dmcupjpj0dr04" path="res://GameCore/Scripts/DeathPopup.gd" id="1_t2qvq"]
+[ext_resource type="Texture2D" uid="uid://0kv80eyrgk4e" path="res://GameCore/Sprites/game_over.png" id="2_5u2xb"]
+[ext_resource type="Theme" uid="uid://pm5qrltkxppx" path="res://GameCore/Scenes/Menus/Buttons.tres" id="3_qenhd"]
+[ext_resource type="FontFile" uid="uid://bj1lr7ptxj7eq" path="res://GameCore/Sprites/ShareTechMono-Regular.ttf" id="3_vrc8g"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_xn0ty"]
-font_size = 75
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vrc8g"]
+content_margin_top = 2048.0
+content_margin_bottom = 2048.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_t2qvq"]
-font_size = 30
+[sub_resource type="LabelSettings" id="LabelSettings_n6fmw"]
+font = ExtResource("3_vrc8g")
+font_size = 25
+font_color = Color(0.956863, 0.823529, 0.352941, 1)
+
+[sub_resource type="Animation" id="Animation_5u2xb"]
+resource_name = "appear"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(0.0666667, 0, 0, 0), Color(0.0666667, 0, 0, 0.752941)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(0.392292, 0.392292),
+"update": 0,
+"values": [Vector2(-272, 550), Vector2(-272, -9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/Subtitle:label_settings:font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.466667, 0.766667),
+"transitions": PackedFloat32Array(0.25, 0.25),
+"update": 0,
+"values": [Color(0.956863, 0.823529, 0.352941, 0), Color(0.956863, 0.823529, 0.352941, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/VBoxContainer/play_btn:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.778315, 1),
+"transitions": PackedFloat32Array(0.392292, 0.392292),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/VBoxContainer/quit_btn:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.778315, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/VBoxContainer/quit_btn:custom_minimum_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 50)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MarginContainer/VBoxContainer/play_btn:custom_minimum_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_qenhd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.0392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-272, -9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/Subtitle:label_settings:font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.956863, 0.823529, 0.352941, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/VBoxContainer/play_btn:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/VBoxContainer/quit_btn:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/VBoxContainer/quit_btn:custom_minimum_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 50)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MarginContainer/VBoxContainer/play_btn:custom_minimum_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qenhd"]
+_data = {
+&"RESET": SubResource("Animation_qenhd"),
+&"appear": SubResource("Animation_5u2xb")
+}
 
 [node name="DeathPopup" type="Control"]
 layout_mode = 3
@@ -15,6 +202,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
 script = ExtResource("1_t2qvq")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -25,52 +214,71 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.5)
+color = Color(1, 0, 0, 0.0392157)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -272.0
+offset_top = -9.0
+offset_right = 1424.0
+offset_bottom = 657.0
 
-[node name="Panel" type="Panel" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Title" type="Label" parent="CenterContainer/Panel"]
+[node name="logo" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-offset_left = -210.0
-offset_top = -274.0
-offset_right = 196.0
-offset_bottom = -171.0
-text = "DERROTA"
-label_settings = SubResource("LabelSettings_xn0ty")
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("2_5u2xb")
+expand_mode = 5
+stretch_mode = 5
 
-[node name="Subtitle" type="Label" parent="CenterContainer/Panel"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-offset_left = -496.0
-offset_top = -148.0
-offset_right = 497.0
-offset_bottom = -106.0
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vrc8g")
+
+[node name="Subtitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Você não conseguiu resistir contra a onda inimiga dessa vez."
-label_settings = SubResource("LabelSettings_t2qvq")
+label_settings = SubResource("LabelSettings_n6fmw")
 horizontal_alignment = 1
 
-[node name="OK" type="Button" parent="CenterContainer/Panel"]
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-offset_left = -196.0
-offset_top = 99.0
-offset_right = 200.0
-offset_bottom = 167.0
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vrc8g")
+
+[node name="play_btn" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_qenhd")
 text = "Jogar Novamente"
 
-[node name="OK2" type="Button" parent="CenterContainer/Panel"]
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-offset_left = -197.0
-offset_top = 11.0
-offset_right = 199.0
-offset_bottom = 79.0
-text = "Voltar ao menu"
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vrc8g")
+
+[node name="quit_btn" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_qenhd")
+text = "Sair do Jogo"
+
+[node name="HSeparator5" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vrc8g")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qenhd")
+}
+autoplay = "appear"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/play_btn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]

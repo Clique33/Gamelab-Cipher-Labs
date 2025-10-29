@@ -1,0 +1,143 @@
+[gd_scene load_steps=13 format=3 uid="uid://3kilhde4l4f1"]
+
+[ext_resource type="Script" uid="uid://d1303twrbeku6" path="res://GameCore/Scripts/Menus/options_menu.gd" id="1_ohk76"]
+[ext_resource type="Texture2D" uid="uid://bad1s7p5v0tw1" path="res://GameCore/Sprites/background_main.jpg" id="3_qx36l"]
+[ext_resource type="Theme" uid="uid://pm5qrltkxppx" path="res://GameCore/Scenes/Menus/Buttons.tres" id="4_o4nmk"]
+[ext_resource type="FontFile" uid="uid://bj1lr7ptxj7eq" path="res://GameCore/Sprites/ShareTechMono-Regular.ttf" id="5_ohk76"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ji00l"]
+content_margin_top = 2048.0
+content_margin_bottom = 2048.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_qx36l"]
+font = ExtResource("5_ohk76")
+font_size = 25
+font_color = Color(0.929412, 0.796078, 0.32549, 1)
+outline_size = 8
+outline_color = Color(0.0745098, 0.12549, 0.164706, 1)
+shadow_size = 0
+
+[sub_resource type="Gradient" id="Gradient_ce43o"]
+colors = PackedColorArray(0.823529, 0.713726, 0.305882, 1, 0.823529, 0.713726, 0.305882, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ohk76"]
+gradient = SubResource("Gradient_ce43o")
+
+[sub_resource type="Theme" id="Theme_qx36l"]
+HSlider/icons/tick = SubResource("GradientTexture1D_ohk76")
+
+[sub_resource type="Animation" id="Animation_02jv1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tjiy5"]
+resource_name = "reveal"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.366667),
+"transitions": PackedFloat32Array(0.435274, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ghyc"]
+_data = {
+&"RESET": SubResource("Animation_02jv1"),
+&"reveal": SubResource("Animation_tjiy5")
+}
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ohk76")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_qx36l")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -88.0
+offset_right = 232.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="fullscreen_check" type="CheckButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("4_o4nmk")
+text = "Tela Cheia"
+alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ji00l")
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_o4nmk")
+text = "Volume Principal:"
+label_settings = SubResource("LabelSettings_qx36l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_qx36l")
+rounded = true
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ji00l")
+
+[node name="return_btn" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_o4nmk")
+text = "Voltar ao Menu Principal
+"
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2ghyc")
+}
+autoplay = "reveal"
+
+[connection signal="toggled" from="VBoxContainer/fullscreen_check" to="." method="_on_fullscreen_check_toggled"]
+[connection signal="value_changed" from="VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="VBoxContainer/return_btn" to="." method="_on_return_btn_pressed"]

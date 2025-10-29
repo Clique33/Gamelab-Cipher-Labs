@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtfssqxo1x06q"]
+[gd_scene load_steps=13 format=3 uid="uid://dtfssqxo1x06q"]
 
 [ext_resource type="PackedScene" uid="uid://k74vmnv4fgrc" path="res://GameCore/Scenes/Player.tscn" id="1"]
 [ext_resource type="Script" uid="uid://d0hpefabtaggf" path="res://GameCore/Scripts/World.gd" id="2"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dxajbvnuy6oog" path="res://GameCore/Scenes/VictoryPopup.tscn" id="3_e4uwn"]
 [ext_resource type="PackedScene" uid="uid://bo60ykqgqryrf" path="res://GameCore/Scenes/DeathPopup.tscn" id="4_2cfxq"]
 [ext_resource type="Script" uid="uid://boobdw1so7gui" path="res://ExperienceSystem/experience_component.gd" id="4_h5rex"]
+[ext_resource type="PackedScene" uid="uid://og2a57f75j2g" path="res://GameCore/Scenes/Menus/PauseMenu.tscn" id="5_7tp8q"]
 [ext_resource type="Resource" uid="uid://dt70xexdpd48h" path="res://GameCore/Resources/ExperienceData.tres" id="5_s0p5x"]
 [ext_resource type="PackedScene" uid="uid://b5y2gfpp3ubbm" path="res://GameCore/Scenes/Map.tscn" id="6_733yp"]
+[ext_resource type="Theme" uid="uid://pm5qrltkxppx" path="res://GameCore/Scenes/Menus/Buttons.tres" id="6_gjht2"]
 [ext_resource type="AudioStream" uid="uid://baj2qpb3576gt" path="res://GameCore/Sfx/dancramp - Void - 05 Cyber Side Scroller.mp3" id="10_n82l2"]
 
 [node name="World" type="Node2D"]
@@ -16,10 +18,10 @@ script = ExtResource("2")
 spawn_radius = 200.0
 spawn_margin = 200.0
 min_spawn_distance = 550.0
-min_spawn_interval = 0.2
-time_to_max_difficulty = 200.0
+min_spawn_interval = 0.08
+time_to_max_difficulty = 300.0
 rare_drop_scene = ExtResource("2_fqnur")
-rare_drop_chance = 0.2
+rare_drop_chance = 0.01
 rare_drop_every = 50
 VictoryPopupScene = ExtResource("3_e4uwn")
 DeathPopupScene = ExtResource("4_2cfxq")
@@ -32,6 +34,17 @@ DeathPopupScene = ExtResource("4_2cfxq")
 
 [node name="ExperienceUI" parent="CanvasLayer" node_paths=PackedStringArray("component") instance=ExtResource("2_h5rex")]
 component = NodePath("../../Player/ExperienceComponent")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 38.0
+theme = ExtResource("6_gjht2")
+text = "||"
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_7tp8q")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("1")]
 collision_mask = 48
@@ -54,4 +67,8 @@ process_mode = 3
 stream = ExtResource("10_n82l2")
 volume_db = -10.0
 autoplay = true
+max_distance = 4096.0
+attenuation = 0.0
 parameters/looping = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="PauseMenu" method="_on_button_pressed"]

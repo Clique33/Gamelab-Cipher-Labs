@@ -10,7 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Rogue-like-clone"
+config/name="Cipher Protocol"
+config/description="O futuro está em suas mãos!
+
+Uma exploração descontrolada liberou uma ameaça alienígena. Apenas engenheiros sobreviventes podem lutar usando armas de tecnologia sustentável.
+Mate inimigos, ganhe EXP e desbloqueie upgrades poderosos para suas armas e habilidades.
+Enfrente hordas alienígenas, domine padrões de ataque e encontre a Chave de Acesso para salvar a humanidade.
+
+Ação intensa • Decisões estratégicas • Progresso constante"
 run/main_scene="uid://bo4i45pyemgfv"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0.137255, 0.192157, 0.254902, 1)
@@ -41,3 +48,4 @@ debug_level_up={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

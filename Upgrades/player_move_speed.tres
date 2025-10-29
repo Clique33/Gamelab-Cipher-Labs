@@ -6,9 +6,9 @@
 script = ExtResource("1_vprsp")
 type = 1
 title = "Velocidade de Movimento"
-description = "+10% de velocidade de movimento."
+description = "+5% de velocidade de movimento."
 rarity = 0
 stat_key = &"move_speed"
-stat_value = 1.1
+stat_value = 1.05
 is_multiplier = true
 metadata/_custom_type_script = "uid://db4xn8lw6vdf5"
