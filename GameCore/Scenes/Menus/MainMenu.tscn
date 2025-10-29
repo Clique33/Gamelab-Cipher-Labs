@@ -142,7 +142,7 @@ tracks/2/path = NodePath("MarginContainer/HBoxContainer/TextureRect:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.810809, 1),
+"times": PackedFloat32Array(0, 0.8, 1.16667),
 "transitions": PackedFloat32Array(1, 0.5, 0.5),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
