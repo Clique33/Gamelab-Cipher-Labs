@@ -82,8 +82,8 @@ func _process(delta: float) -> void:
 		camera.position = player.position
 
 	# debug: pressionar F9 spawna o item final na posição do player
-	if Input.is_action_just_pressed("spawn_final") and player != null:
-		force_spawn_rare(player.global_position)
+	"""if Input.is_action_just_pressed("spawn_final") and player != null:
+		force_spawn_rare(player.global_position)"""
 
 func _draw() -> void:
 	# Draw temporary spawn markers (red ring with yellow center)
