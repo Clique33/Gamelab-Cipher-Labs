@@ -31,3 +31,15 @@ func handle_gray_health(value: float) -> DamageTimer:
 	timer.start()
 	timer.timeout_value.connect(update_gray_ui)
 	return timer
+
+
+func _on_current_bar_value_changed(value: float) -> void:
+	var style :StyleBoxFlat = current_ui.get_theme_stylebox("fill") 
+	if current_ui.value == current_ui.max_value:
+		style.border_width_right = 2
+		style.corner_radius_bottom_right = 5
+		style.corner_radius_top_right = 5
+	else:
+		style.border_width_right = 0
+		style.corner_radius_bottom_right = 0
+		style.corner_radius_top_right = 0
