@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bo4i45pyemgfv"]
+[gd_scene load_steps=24 format=3 uid="uid://bo4i45pyemgfv"]
 
 [ext_resource type="Script" uid="uid://bdy0man1m60w2" path="res://GameCore/Scripts/Menus/main_menu.gd" id="1_r3cns"]
 [ext_resource type="AudioStream" uid="uid://cecmq82pue1ep" path="res://GameCore/Sfx/dancramp - Void - 01 It Is What It Is.mp3" id="4_bmqnr"]
@@ -105,6 +105,8 @@ HSlider/icons/tick = SubResource("ImageTexture_ve3m0")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_3nyoo")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_0bsww")
 HSlider/styles/slider = SubResource("StyleBoxFlat_upp80")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjiy5"]
 
 [sub_resource type="Animation" id="Animation_tjiy5"]
 resource_name = "reveal"
@@ -228,7 +230,6 @@ theme_override_constants/margin_bottom = 100
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -299,6 +300,11 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_ji00l")
 [node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_f0bvf")
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tjiy5")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 modulate = Color(1, 1, 1, 0)

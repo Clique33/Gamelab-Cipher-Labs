@@ -40,26 +40,19 @@ func play_death_effects() -> void:
 	if pnode and pnode is CPUParticles2D:
 		pnode.emitting = true
 
-# --- Botões ---
-func _on_ok_pressed() -> void:
-	get_tree().paused = false
-	print("Redirecionando para: ", world_scene_path)
-	if world_scene_path:
-		get_tree().change_scene_to_file(world_scene_path)
-	else:
-		print("Erro: world_scene_path não está definido!")
-
-func _on_ok2_pressed() -> void:
-	get_tree().paused = false
-	print("Redirecionando para: ", main_menu_scene_path)
-	if main_menu_scene_path:
-		get_tree().change_scene_to_file(main_menu_scene_path)
-	else:
-		print("Erro: main_menu_scene_path não está definido!")
-
 func _set_subtree_process_mode(node: Node) -> void:
 	if node == null:
 		return
 	node.process_mode = Node.PROCESS_MODE_ALWAYS
 	for child in node.get_children():
 		_set_subtree_process_mode(child)
+
+
+func _on_play_btn_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(world_scene_path)
+
+
+func _on_quit_btn_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(main_menu_scene_path)
