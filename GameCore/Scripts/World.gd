@@ -49,12 +49,12 @@ func _ready() -> void:
 		game_won.connect(_on_game_won)
 
 	# Cria atalho de debug F9 para spawnar o item final
-	if not InputMap.has_action("spawn_final"):
+	"""if not InputMap.has_action("spawn_final"):
 		InputMap.add_action("spawn_final")
 		var ev := InputEventKey.new()
 		ev.keycode = KEY_F9
-		InputMap.action_add_event("spawn_final", ev)
-
+		InputMap.action_add_event("spawn_final", ev)"""
+	
 	# If the level designer didn't populate the exported arrays in the inspector,
 	# provide reasonable defaults so the spawner works out of the box.
 	if enemy_scenes.is_empty():
@@ -126,10 +126,11 @@ func _spawn_loop() -> void:
 func _spawn_enemy_with_difficulty(difficulty: float) -> void:
 	var r: float = randf()
 
-	# Probabilidades dinâmicas
-	var p_weak: float = lerp(0.7, 0.4, difficulty)    # inimigo fraco
-	var p_medium: float = lerp(0.9, 0.7, difficulty)  # inimigo médio
-	# Inimigo forte = resto (1.0 - p_medium)
+	# Probabilidades de inimigos: fraco, médio, forte
+	# Inimigos fortes aparecem mais cedo e aumentam continuamente
+	var p_weak: float = clamp(lerp(0.7, 0.2, difficulty / (difficulty + 1)), 0.1, 0.7)
+	var p_medium: float = clamp(lerp(0.9, 0.6, difficulty / (difficulty + 1)), 0.2, 0.9)
+	# Resto será inimigo forte
 
 	var idx: int = 0
 	if r < p_weak:
@@ -147,17 +148,19 @@ func _spawn_enemy_with_difficulty(difficulty: float) -> void:
 	var chosen_scene: PackedScene = enemy_scenes[idx] if idx < enemy_scenes.size() else enemy_scene
 	var e = chosen_scene.instantiate()
 
-	# Escala stats com dificuldade de forma não-linear
+	# Escala stats com dificuldade de forma infinita
 	if base_data:
 		var data_copy = base_data.duplicate(true)
-		var scale_factor: float = 1.0 + pow(difficulty, 1.3) * 0.8  # progressão suave exponencial
+		var scale_factor: float = 1.0 + pow(difficulty, 1.5)  # escalada infinita exponencial
+
 		if data_copy.has_method("set"):
 			if "move_speed" in data_copy:
 				data_copy.move_speed *= scale_factor
 			if "touch_damage" in data_copy:
 				data_copy.touch_damage *= scale_factor
 			if "xp_amount" in data_copy:
-				data_copy.xp_amount = int(ceil(float(data_copy.xp_amount) * (1.0 + difficulty * 0.5)))
+				# XP cresce proporcionalmente aos stats
+				data_copy.xp_amount = int(ceil(float(data_copy.xp_amount) * scale_factor))
 			if "health_status" in data_copy and data_copy.health_status:
 				var hs = data_copy.health_status.duplicate(true)
 				if "MaxHealth" in hs:
@@ -175,6 +178,7 @@ func _spawn_enemy_with_difficulty(difficulty: float) -> void:
 
 	e.global_position = spawn_pos
 	add_child(e)
+
 
 
 func _spawn_enemy(difficulty: float = 0.0) -> void:
@@ -308,7 +312,7 @@ func register_enemy_death(position: Vector2) -> void:
 	if rare_drop_every > 0 and _kill_count % rare_drop_every == 0:
 		var r: float = randf()
 		print("[World] Rare-drop check: kill_count=", _kill_count, " roll=", r, " threshold=", rare_drop_chance)
-		if r <= rare_drop_chance and rare_drop_scene != null:
+		if r <= rare_drop_chance and rare_drop_scene != null and not _game_won_flag:
 			var drop = rare_drop_scene.instantiate()
 			if drop:
 				drop.global_position = position

@@ -22,16 +22,13 @@ func apply_area_damage() -> void:
 	
 	# --- DEBUG 1 ---
 	# Isso nos diz quantos corpos a área encontrou.
-	print("Bomba %s: Verificando dano. Corpos encontrados: %s" % [self.name, bodies.size()])
 
 	if bodies.is_empty():
-		print("Bomba Aleatória: Nenhum inimigo encontrado na área de explosão. Verifique as camadas de colisão.") 
 		return # Adicionado para segurança
 
 	for body in bodies:
 		# --- DEBUG 2 ---
 		# Isso nos diz o que foi encontrado e se está no grupo correto.
-		print("Corpo encontrado: %s, está no grupo 'enemy'? %s" % [body.name, body.is_in_group("enemy")])
 		
 		if body.is_in_group("enemy"): 
 			var health_found = false
@@ -39,15 +36,14 @@ func apply_area_damage() -> void:
 				if child is HealthComponent:
 					# --- DEBUG 3 ---
 					# Isso confirma que o dano está sendo enviado.
-					print("HealthComponent encontrado! Aplicando %s de dano." % damage)
 					child.damage(damage) 
 					health_found = true
 					break
 			
 			if not health_found:
+				pass
 				# --- DEBUG 4 ---
 				# Isso nos alerta se o inimigo não tiver um HealthComponent.
-				print("ERRO: Inimigo %s foi encontrado, mas não tem um HealthComponent!" % body.name)
 
 func _on_animation_finished() -> void:
 	queue_free()

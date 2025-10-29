@@ -11,7 +11,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func handle_pause():
 	visible = !visible;
 	get_tree().paused = !get_tree().paused;
-	$"../AudioStreamPlayer2D".stream_paused = !$"../AudioStreamPlayer2D".stream_paused
+	$"../AudioStreamPlayer2D".stream_paused = visible
 
 func _on_resume_btn_pressed() -> void:
 	visible = false

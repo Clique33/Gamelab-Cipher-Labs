@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://dybr857fvxxe7"]
 
 [ext_resource type="Script" uid="uid://db4xn8lw6vdf5" path="res://Upgrades/UpgradeData.gd" id="1_upg"]
 
@@ -6,8 +6,10 @@
 script = ExtResource("1_upg")
 type = 1
 title = "Medkit Aprimorado (P)"
-description = "+20% de cura recebida de Medkits."
+description = "+15% de cura recebida de Medkits."
 rarity = 0
+override_stats = {}
 stat_key = &"medkit_heal_multiplier"
-stat_value = 1.2
+stat_value = 1.15
 is_multiplier = true
+weapon_id = &""

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3 uid="uid://t2cxovowd177"]
 
 [ext_resource type="Script" uid="uid://db4xn8lw6vdf5" path="res://Upgrades/UpgradeData.gd" id="1_upg"]
 
@@ -6,8 +6,10 @@
 script = ExtResource("1_upg")
 type = 2
 title = "Cadência Aumentada (P)"
-description = "-10% de cooldown (mais rápido) para todas as armas."
+description = "-5% de cooldown (mais rápido) para todas as armas."
 rarity = 0
+override_stats = {}
 stat_key = &"cooldown"
-stat_value = 0.9
+stat_value = 0.95
 is_multiplier = true
+weapon_id = &""

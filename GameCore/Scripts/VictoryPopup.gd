@@ -76,16 +76,6 @@ func play_victory_particles() -> void:
 			var sz = get_viewport_rect().size
 			mat.set_shader_parameter("resolution", sz)
 
-# Botão "OK" – reinicia World
-func _on_ok_pressed() -> void:
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://GameCore/Scenes/World.tscn")
-
-# Botão "OK2" – volta para MainMenu
-func _on_ok2_pressed() -> void:
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://GameCore/Scenes/Menus/MainMenu.tscn")
-
 # --- Funções auxiliares para buscar nós ---
 func _find_node_in_scene(name: String) -> Node:
 	var root = get_tree().current_scene
@@ -121,3 +111,18 @@ func _safe_set_process_mode(node: Node, mode: int) -> void:
 		if prop is Dictionary and prop.has("name") and str(prop["name"]) == "process_mode":
 			node.set("process_mode", mode)
 			return
+
+
+func _on_play_btn_2_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://GameCore/Scenes/World.tscn")
+
+
+func _on_quit_btn_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://GameCore/Scenes/Menus/MainMenu.tscn")
+
+
+func _on_continue_btn_pressed() -> void:
+	get_tree().paused = false
+	queue_free()

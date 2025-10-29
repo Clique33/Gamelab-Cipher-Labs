@@ -18,10 +18,10 @@ script = ExtResource("2")
 spawn_radius = 200.0
 spawn_margin = 200.0
 min_spawn_distance = 550.0
-min_spawn_interval = 0.2
-time_to_max_difficulty = 200.0
+min_spawn_interval = 0.01
+time_to_max_difficulty = 240.0
 rare_drop_scene = ExtResource("2_fqnur")
-rare_drop_chance = 0.2
+rare_drop_chance = 1.0
 rare_drop_every = 50
 VictoryPopupScene = ExtResource("3_e4uwn")
 DeathPopupScene = ExtResource("4_2cfxq")
@@ -67,6 +67,8 @@ process_mode = 3
 stream = ExtResource("10_n82l2")
 volume_db = -10.0
 autoplay = true
+max_distance = 4096.0
+attenuation = 0.0
 parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer/Button" to="PauseMenu" method="_on_button_pressed"]

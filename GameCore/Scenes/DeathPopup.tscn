@@ -1,14 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo60ykqgqryrf"]
+[gd_scene load_steps=10 format=3 uid="uid://bo60ykqgqryrf"]
 
 [ext_resource type="Script" uid="uid://dmcupjpj0dr04" path="res://GameCore/Scripts/DeathPopup.gd" id="1_t2qvq"]
 [ext_resource type="Texture2D" uid="uid://0kv80eyrgk4e" path="res://GameCore/Sprites/game_over.png" id="2_5u2xb"]
 [ext_resource type="Theme" uid="uid://pm5qrltkxppx" path="res://GameCore/Scenes/Menus/Buttons.tres" id="3_qenhd"]
+[ext_resource type="FontFile" uid="uid://bj1lr7ptxj7eq" path="res://GameCore/Sprites/ShareTechMono-Regular.ttf" id="3_vrc8g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vrc8g"]
 content_margin_top = 2048.0
 content_margin_bottom = 2048.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_t2qvq"]
+[sub_resource type="LabelSettings" id="LabelSettings_n6fmw"]
+font = ExtResource("3_vrc8g")
 font_size = 25
 font_color = Color(0.956863, 0.823529, 0.352941, 1)
 
@@ -240,7 +242,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_vrc8g")
 [node name="Subtitle" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Você não conseguiu resistir contra a onda inimiga dessa vez."
-label_settings = SubResource("LabelSettings_t2qvq")
+label_settings = SubResource("LabelSettings_n6fmw")
 horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]

@@ -6,9 +6,10 @@
 script = ExtResource("1_upg")
 type = 1
 title = "Visão Aguçada"
-description = "+20% de raio de detecção de inimigos."
+description = "+15% de raio de detecção de inimigos."
 rarity = 1
+override_stats = {}
 stat_key = &"DetectionArea/CollisionShape2D:shape:radius"
-stat_value = 1.2
+stat_value = 1.15
 is_multiplier = true
 weapon_id = &""
