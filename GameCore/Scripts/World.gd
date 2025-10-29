@@ -93,7 +93,7 @@ func _draw() -> void:
 		draw_circle(local_p, 7.0, Color(1, 1, 0, 0.9))
 
 func _spawn_loop() -> void:
-	while is_inside_tree() and not _game_won_flag:
+	while is_inside_tree():
 		if not _allow_spawns or get_tree() == null or get_tree().paused:
 			if get_tree() == null or !is_inside_tree():
 				return
@@ -114,7 +114,7 @@ func _spawn_loop() -> void:
 		await get_tree().create_timer(current_interval).timeout
 
 		# Checa de novo se pode spawnar
-		if not _allow_spawns or _game_won_flag or get_tree().paused:
+		if not _allow_spawns or get_tree().paused:
 			continue
 
 		_elapsed_time += current_interval
